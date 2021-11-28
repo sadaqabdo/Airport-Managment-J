@@ -5,16 +5,8 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class Flight {
-    public static final void main(String[] args) throws ParseException {
-
-        Flight f1 = new Flight(122, "Milan", "Fquih ben salah", "2013.01.12 04:16:00", "2013.01.12 15:16:00", 1, 3, 2,
-                3);
-        System.out.println(f1.getDepartDate() + "\t" + f1.getArrivingDate() + "\t" + f1.getDuration());
-    }
-
     private int flightID;
     private String source;
     private String destination;
@@ -25,46 +17,32 @@ public class Flight {
     private String status;
     private String flightType;
     private ArrayList<Passenger> passengers;
-    private int airlineID;
-    private int apID;
-    private int airplaneID;
-    private int pilotID;
+    private Airline airline;
+    private Airport airport;
+    private Airplane airplane;
+    private Pilot pilot;
 
     /** Constructors */
-    public Flight() {};
+    public Flight() {
+    };
+
     public Flight(int flightID, String source, String destination, String departString, String arrivingString,
-            int airlineID, int apID, int airplaneID, int pilotID) throws ParseException {
+            Airline airline, Airport airport, Airplane airplane, Pilot pilot) throws ParseException {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
         this.departDate = setDepartDate(departString);
         this.arrivingDate = setArrivingDate(arrivingString);
         this.duration = duration();
-        this.airlineID = airlineID;
-        this.apID = apID;
-        this.airplaneID = airplaneID;
-        this.pilotID = pilotID;
+        this.airline = airline;
+        this.airport = airport;
+        this.airplane = airplane;
+        this.pilot = pilot;
     }
-    public Flight(int flightID, String source, String destination, Date departDate, Date arrivingDate, int terminal,
-            String status, String flightType, 
-            int airlineID, int apID, int airplaneID, int pilotID) {
-        this.flightID = flightID;
-        this.source = source;
-        this.destination = destination;
-        this.departDate = departDate;
-        this.arrivingDate = arrivingDate;
-        this.duration = duration();
-        this.terminal = terminal;
-        this.status = status;
-        this.flightType = flightType;
-        this.airlineID = airlineID;
-        this.apID = apID;
-        this.airplaneID = airplaneID;
-        this.pilotID = pilotID;
-    }
-    public Flight(int flightID, String source, String destination, Date departDate, Date arrivingDate, int terminal,
-            String status, String flightType, ArrayList<Passenger> passengers,
-            int airlineID, int apID, int airplaneID, int pilotID) {
+
+    public Flight(int flightID, String source, String destination, Date departDate, Date arrivingDate,
+            int terminal, String status, String flightType, ArrayList<Passenger> passengers,
+            Airline airline, Airport airport, Airplane airplane, Pilot pilot) {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
@@ -75,111 +53,37 @@ public class Flight {
         this.status = status;
         this.flightType = flightType;
         this.passengers = passengers;
-        this.airlineID = airlineID;
-        this.apID = apID;
-        this.airplaneID = airplaneID;
-        this.pilotID = pilotID;
+        this.airline = airline;
+        this.airport = airport;
+        this.airplane = airplane;
+        this.pilot = pilot;
+    }
+
+    public Flight(int flightID, String source, String destination, Date departDate, Date arrivingDate,
+            int terminal, String status, String flightType, Airline airline, Airport airport,
+            Airplane airplane, Pilot pilot) {
+        this.flightID = flightID;
+        this.source = source;
+        this.destination = destination;
+        this.departDate = departDate;
+        this.arrivingDate = arrivingDate;
+        this.duration = duration();
+        this.terminal = terminal;
+        this.status = status;
+        this.flightType = flightType;
+        this.airline = airline;
+        this.airport = airport;
+        this.airplane = airplane;
+        this.pilot = pilot;
     }
 
     /* Getters And Setters */
-    public int getPilotID() {
-        return pilotID;
-    }
-    
-    public void setPilotID(int pilotID) {
-        this.pilotID = pilotID;
-    }
-
-    public int getAirplaneID() {
-        return airplaneID;
-    }
-
-    public void setAirplaneID(int airplaneID) {
-        this.airplaneID = airplaneID;
-    }
-
-    public int getApID() {
-        return apID;
-    }
-
-    public void setApID(int apID) {
-        this.apID = apID;
-    }
-
-    public int getAirlineID() {
-        return airlineID;
-    }
-
-    public void setAirlineID(int airlineID) {
-        this.airlineID = airlineID;
-    }
-
-    public String getFlightType() {
-        return flightType;
-    }
-
-    public void setFlightType(String flightType) {
-        this.flightType = flightType;
-    }
-
     public int getFlightID() {
         return flightID;
     }
 
     public void setFlightID(int flightID) {
         this.flightID = flightID;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Duration getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Duration duration) {
-        this.duration = duration;
-    }
-
-    public Date getArrivingDate() {
-        return arrivingDate;
-    }
-
-    public Date setArrivingDate(String arrivingString) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
-        Date arriving = formatter.parse(arrivingString);
-        return arriving;
-    }
-
-    public void setDepartDate(Date departDate) {
-        this.departDate = departDate;
-    }
-
-    public void setArrivingDate(Date arrivingDate) {
-        this.arrivingDate = arrivingDate;
-    }
-
-    public Date getDepartDate() {
-        return departDate;
-    }
-
-    public Date setDepartDate(String departString) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
-        Date depart = formatter.parse(departString);
-        return depart;
-    }
-
-    public String getDestination() {
-        return destination;
-    }
-
-    public void setDestination(String destination) {
-        this.destination = destination;
     }
 
     public String getSource() {
@@ -190,12 +94,36 @@ public class Flight {
         this.source = source;
     }
 
-    public List<Passenger> getpassengers() {
-        return passengers;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setPassengers(List<Passenger> passengers) {
-        this.passengers = (ArrayList<Passenger>) passengers;
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public Date getDepartDate() {
+        return departDate;
+    }
+
+    public void setDepartDate(Date departDate) {
+        this.departDate = departDate;
+    }
+
+    public Date getArrivingDate() {
+        return arrivingDate;
+    }
+
+    public void setArrivingDate(Date arrivingDate) {
+        this.arrivingDate = arrivingDate;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
     }
 
     public int getTerminal() {
@@ -204,6 +132,74 @@ public class Flight {
 
     public void setTerminal(int terminal) {
         this.terminal = terminal;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getFlightType() {
+        return flightType;
+    }
+
+    public void setFlightType(String flightType) {
+        this.flightType = flightType;
+    }
+
+    public ArrayList<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(ArrayList<Passenger> passengers) {
+        this.passengers = passengers;
+    }
+
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+
+    public Airport getAirport() {
+        return airport;
+    }
+
+    public void setAirport(Airport airport) {
+        this.airport = airport;
+    }
+
+    public Airplane getAirplane() {
+        return airplane;
+    }
+
+    public void setAirplane(Airplane airplane) {
+        this.airplane = airplane;
+    }
+
+    public Pilot getPilot() {
+        return pilot;
+    }
+
+    public void setPilot(Pilot pilot) {
+        this.pilot = pilot;
+    }
+
+    public Date setArrivingDate(String arrivingString) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
+        Date arriving = formatter.parse(arrivingString);
+        return arriving;
+    }
+
+    public Date setDepartDate(String departString) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
+        Date depart = formatter.parse(departString);
+        return depart;
     }
 
     /** Duration Method */
@@ -232,8 +228,7 @@ public class Flight {
         String durationString = "P" + Long.toString(differenceInDays) + "DT" + Long.toString(differenceInHours) + "H"
                 + Long.toString(differenceInMinutes) + "M" + Long.toString(differenceInSeconds) + "S";
 
-        return  Duration.parse(durationString);
+        return Duration.parse(durationString);
 
     }
-            
 }
