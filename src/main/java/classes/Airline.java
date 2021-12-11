@@ -1,13 +1,13 @@
 package classes;
 
-public class Airline{
+public class Airline {
     private int airlineID;
     private String airlineName;
 
-    public Airline(int airlineID, String airlineName){
+    public Airline(int airlineID, String airlineName) {
         this.setAirlineID(airlineID);
         this.setAirlineName(airlineName);
-        
+
     }
 
     public int getAirlineID() {
@@ -26,6 +26,5 @@ public class Airline{
         this.airlineName = airlineName;
     }
 
-    
 
 }

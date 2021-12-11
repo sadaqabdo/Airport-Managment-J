@@ -4,7 +4,7 @@ public class Ticket {
     private int ticketID;
     private Passenger passenger;
     private Flight flight;
-    
+
     public Ticket(int ticketID, Passenger passenger, Flight flight) {
         this.ticketID = ticketID;
         this.passenger = passenger;

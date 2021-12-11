@@ -4,10 +4,10 @@ import java.sql.Connection;
 
 public class Main {
     public static void main(String[] args) {
-        Connection con=DBConnection.getConnection();
-        if (con==null) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
             System.out.println("Connexion failed:");
-        }else{
+        } else {
             System.out.println("Connexion success:");
 
         }

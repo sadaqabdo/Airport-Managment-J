@@ -1,6 +1,6 @@
 package classes;
 
-public class Airport{
+public class Airport {
     private int apID;
     private String apName;
     private String city;
@@ -12,30 +12,37 @@ public class Airport{
         this.city = city;
         this.country = country;
     }
-    
-    public void setApID(int apID) {
-        this.apID = apID;
-    }
+
     public int getApID() {
         return apID;
     }
-    public void setApName(String apName) {
-        this.apName = apName;
+
+    public void setApID(int apID) {
+        this.apID = apID;
     }
+
     public String getApName() {
         return apName;
     }
-    public void setCity(String city) {
-        this.city = city;
+
+    public void setApName(String apName) {
+        this.apName = apName;
     }
-    public void setCountry(String country) {
-        this.country = country;
-    }
+
     public String getCity() {
         return city;
     }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getCountry() {
         return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 }
