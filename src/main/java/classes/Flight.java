@@ -22,12 +22,14 @@ public class Flight {
     private Airplane airplane;
     private Pilot pilot;
 
-    /** Constructors */
+    /**
+     * Constructors
+     */
     public Flight() {
     }
 
     public Flight(int flightID, String source, String destination, String departString, String arrivingString,
-            Airline airline, Airport airport, Airplane airplane, Pilot pilot) throws ParseException {
+                  Airline airline, Airport airport, Airplane airplane, Pilot pilot) throws ParseException {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
@@ -41,8 +43,8 @@ public class Flight {
     }
 
     public Flight(int flightID, String source, String destination, Date departDate, Date arrivingDate,
-            int terminal, String status, String flightType, ArrayList<Passenger> passengers,
-            Airline airline, Airport airport, Airplane airplane, Pilot pilot) {
+                  int terminal, String status, String flightType, ArrayList<Passenger> passengers,
+                  Airline airline, Airport airport, Airplane airplane, Pilot pilot) {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
@@ -60,8 +62,8 @@ public class Flight {
     }
 
     public Flight(int flightID, String source, String destination, Date departDate, Date arrivingDate,
-            int terminal, String status, String flightType, Airline airline, Airport airport,
-            Airplane airplane, Pilot pilot) {
+                  int terminal, String status, String flightType, Airline airline, Airport airport,
+                  Airplane airplane, Pilot pilot) {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
@@ -75,6 +77,23 @@ public class Flight {
         this.airport = airport;
         this.airplane = airplane;
         this.pilot = pilot;
+    }
+
+    /**
+     * Duration Method
+     */
+    static Duration duration(Date startDate, Date endDate) {
+        long differenceInTime = endDate.getTime() - startDate.getTime();
+
+        long differenceInSeconds = (differenceInTime / 1000) % 60;
+        long differenceInMinutes = (differenceInTime / (1000 * 60)) % 60;
+        long differenceInHours = (differenceInTime / (1000 * 60 * 60)) % 24;
+        long differenceInDays = (differenceInTime / (1000 * 60 * 60 * 24)) % 365;
+
+        String durationString = "P" + differenceInDays + "DT" + differenceInHours + "H"
+                + differenceInMinutes + "M" + differenceInSeconds + "S";
+
+        return Duration.parse(durationString);
     }
 
     /* Getters And Setters */
@@ -202,21 +221,6 @@ public class Flight {
         return depart;
     }
 
-    /** Duration Method */
-    static Duration duration(Date startDate, Date endDate) {
-        long differenceInTime = endDate.getTime() - startDate.getTime();
-
-        long differenceInSeconds = (differenceInTime / 1000) % 60;
-        long differenceInMinutes = (differenceInTime / (1000 * 60)) % 60;
-        long differenceInHours = (differenceInTime / (1000 * 60 * 60)) % 24;
-        long differenceInDays = (differenceInTime / (1000 * 60 * 60 * 24)) % 365;
-
-        String durationString = "P" + Long.toString(differenceInDays) + "DT" + Long.toString(differenceInHours) + "H"
-                + Long.toString(differenceInMinutes) + "M" + Long.toString(differenceInSeconds) + "S";
-
-        return Duration.parse(durationString);
-    }
-
     public Duration duration() {
         long differenceInTime = this.arrivingDate.getTime() - this.departDate.getTime();
 
@@ -225,8 +229,8 @@ public class Flight {
         long differenceInHours = (differenceInTime / (1000 * 60 * 60)) % 24;
         long differenceInDays = (differenceInTime / (1000 * 60 * 60 * 24)) % 365;
 
-        String durationString = "P" + Long.toString(differenceInDays) + "DT" + Long.toString(differenceInHours) + "H"
-                + Long.toString(differenceInMinutes) + "M" + Long.toString(differenceInSeconds) + "S";
+        String durationString = "P" + differenceInDays + "DT" + differenceInHours + "H"
+                + differenceInMinutes + "M" + differenceInSeconds + "S";
 
         return Duration.parse(durationString);
 

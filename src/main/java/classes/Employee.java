@@ -1,16 +1,17 @@
 package classes;
 
-public class Employee extends Person{
+public class Employee extends Person {
     private String job;
     //Constructor
 
     //default Constructor
-    public Employee(){
+    public Employee() {
     }
+
     // Constructors
     public Employee(int id, String name, int age, String gender, String nationality, String job) {
         super(id, name, age, gender, nationality);
-        this.job=job;
+        this.job = job;
     }
 
 
@@ -25,6 +26,7 @@ public class Employee extends Person{
     public String getJob() {
         return job;
     }
+
     public void setJob(String job) {
         this.job = job;
     }

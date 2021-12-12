@@ -8,16 +8,11 @@ import java.sql.Connection;
 
 public class Main{
     public static void main(String[] args) {
-        /*
-        EmployeeDao employeeDao =new EmployeeDaoImpl();
-        Employee employee =new Employee(2, "joe");
 
-        employeeDao.save(employee);
-        */
-        Connection con=DBConnection.getConnection();
-        if (con==null) {
+        Connection con = DBConnection.getConnection();
+        if (con == null) {
             System.out.println("Connexion failed:");
-        }else{
+        } else {
             System.out.println("Connexion success:");
 
         }
