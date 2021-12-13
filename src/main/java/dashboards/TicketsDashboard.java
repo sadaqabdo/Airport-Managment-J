@@ -21,7 +21,7 @@ public class TicketsDashboard extends Application{
     public void start(Stage stage)  throws IOException{
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(TicketsDashboard.class.getResource("Ticket.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 900, 650);
+            Scene scene = new Scene(fxmlLoader.load(), 800, 700);
             stage.setTitle("Airport Nameless");
             stage.setScene(scene);
 
