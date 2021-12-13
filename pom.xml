@@ -36,7 +36,7 @@
             <version>17-ea+11</version>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains</groupId>
+            <groupId>org.jetbrafig:esteins</groupId>
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>

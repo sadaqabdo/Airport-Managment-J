@@ -12,10 +12,7 @@ public class LoginDashboard extends Application {
         Parent root = FXMLLoader.load(LoginDashboard.class.getResource("login.fxml"));
         Scene scene = new Scene(root, 600, 200);
         stage.setTitle("helo");
-        stage.setScene(scene);
+        stage.setScene(scene);  
         stage.show();
     }
 }
-
-
-
