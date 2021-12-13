@@ -8,6 +8,7 @@
    <menus>
       <Menu fx:id="Flight" mnemonicParsing="false" text="Flight">
          <items>
+            <MenuItem fx:id="ViewMenu" mnemonicParsing="false" text="View" />
             <MenuItem fx:id="AddMenu" mnemonicParsing="false" text="Add" />
             <MenuItem fx:id="SearchMenu" mnemonicParsing="false" text="Search" />
          </items>
