@@ -3,7 +3,6 @@ package airportmanagment;
 import dashboards.FlightsDashboard;
 import dashboards.LoginDashboard;
 import dashboards.TicketsDashboard;
-
 import java.sql.Connection;
 
 import static javafx.application.Application.launch;

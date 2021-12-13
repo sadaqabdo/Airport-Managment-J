@@ -4,6 +4,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -27,7 +29,7 @@
             <fx:include source="add_flight.fxml" fx:id="addflight" />
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="371.0" prefWidth="555.0" SplitPane.resizableWithParent="false">
                <content>
-                  <TableView fx:id="FlightTable" prefHeight="371.0" prefWidth="314.0">
+                  <TableView fx:id="FlightTable" prefHeight="371.0" prefWidth="314.0">            
                      <columns>
                         <TableColumn fx:id="FlightID" prefWidth="75.0" text="FlightID" />
                         <TableColumn fx:id="Source" prefWidth="75.0" text="Source" />
