@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+
+<MenuBar xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <menus>
+      <Menu fx:id="Flight" mnemonicParsing="false" text="Flight">
+         <items>
+            <MenuItem fx:id="AddMenu" mnemonicParsing="false" text="Add" />
+            <MenuItem fx:id="SearchMenu" mnemonicParsing="false" text="Search" />
+         </items>
+      </Menu>
+   </menus>
+</MenuBar>
