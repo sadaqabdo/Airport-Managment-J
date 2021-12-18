@@ -24,11 +24,10 @@ public class TicketsDashboard extends Application{
             Scene scene = new Scene(fxmlLoader.load(), 800, 700);
             stage.setTitle("Airport Nameless");
             stage.setScene(scene);
-
-            BorderPane root =new BorderPane();
             stage.show();
         }catch (IOException e){
             System.out.println(e.getMessage());
+            throw new IOException();
         }
     }
 
