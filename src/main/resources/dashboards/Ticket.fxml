@@ -32,98 +32,63 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TicketController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
+      <fx:include source="flightmenu.fxml" />
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <SplitPane dividerPositions="0.3934169278996865" layoutX="30.0" layoutY="28.0" prefHeight="375.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.4" layoutX="30.0" layoutY="28.0" prefHeight="375.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                  <GridPane alignment="CENTER" prefHeight="373.0" prefWidth="291.0">
+                     <columnConstraints>
+                        <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="150.0" prefWidth="140.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="54.0" minHeight="40.0" prefHeight="54.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="96.0" minHeight="40.0" prefHeight="82.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="40.0" minHeight="11.0" prefHeight="13.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <TextField layoutX="14.0" layoutY="56.0" prefHeight="40.0" prefWidth="160.0" promptText="Ticket" style="-fx-background-color: f2f5f8; -fx-border-color: #00d9ff86; -fx-border-radius: 10; -fx-border-width: 2;">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
-                        <TextField layoutX="14.0" layoutY="129.0" prefHeight="40.0" prefWidth="160.0" promptText="Passenger" style="-fx-background-color: f2f5f8; -fx-border-color: #00d9ff86; -fx-border-radius: 10; -fx-border-width: 2;">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
-                        <TextField layoutX="14.0" layoutY="199.0" prefHeight="40.0" prefWidth="160.0" promptText="Flight" style="-fx-background-color: f2f5f8; -fx-border-color: #00d9ff86; -fx-border-radius: 10; -fx-border-width: 2;">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
-                        <ToggleButton contentDisplay="CENTER" layoutX="59.0" layoutY="300.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="131.0" text="Add Row" textFill="#000279">
+                        <Button fx:id="Addbtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="10.0" layoutY="225.0" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="21.0" prefWidth="100.0" text="Add Ticket" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <TextField fx:id="TicketField" prefHeight="30.0" prefWidth="145.0" promptText="Ticket">
                            <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></ToggleButton>
+                              <Cursor fx:constant="TEXT" />
+                           </cursor>
+                        </TextField>
+                        <TextField fx:id="PassengerField" prefHeight="30.0" prefWidth="145.0" promptText="Passenger" GridPane.rowIndex="1" />
+                        <TextField fx:id="FlightField" prefHeight="30.0" prefWidth="145.0" promptText="Flight" GridPane.rowIndex="2" />
+                        <Button fx:id="DeleteBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="24.0" maxWidth="147.0" mnemonicParsing="false" onAction="#OnDeleteButton" prefHeight="24.0" prefWidth="147.0" text="Delete selected Ticket" textAlignment="CENTER" GridPane.rowIndex="4" />
+
                      </children>
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </GridPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="385.0">
                      <children>
-                        <TableView layoutX="14.0" prefHeight="373.0" prefWidth="384.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="View" accessibleRole="PARENT" editable="true" fixedCellSize="0.0" layoutX="-7.0" minHeight="300.0" minWidth="300.0" mouseTransparent="true" prefHeight="373.0" prefWidth="326.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn prefWidth="128.0" text="Ticket ID" />
-                            <TableColumn prefWidth="124.0" text="Passenger" />
-                              <TableColumn minWidth="0.0" prefWidth="130.0" text="Flight" />
+                            <TableColumn fx:id="ticketcol" prefWidth="128.0" text="Ticket ID" />
+                            <TableColumn fx:id="passengercol" prefWidth="124.0" text="Passenger" />
+                              <TableColumn fx:id="flightcol" minWidth="0.0" prefWidth="130.0" text="Flight" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
