@@ -1,37 +1,39 @@
 package classes;
 
 public class Ticket {
-    private int ticketID;
-    private Passenger passenger;
-    private Flight flight;
+    private String ticketID;
+    private String passenger;
+    private String flight;
 
-    public Ticket(int ticketID, Passenger passenger, Flight flight) {
+    public Ticket(String ticketID, String passenger, String flight) {
         this.ticketID = ticketID;
         this.passenger = passenger;
         this.flight = flight;
     }
 
-    public int getTicketID() {
+    public String getTicketID() {
         return ticketID;
     }
 
-    public void setTicketID(int ticketID) {
+    public void setTicketID(String ticketID) {
         this.ticketID = ticketID;
     }
 
-    public Passenger getPassenger() {
+    public String getPassenger() {
         return passenger;
     }
 
-    public void setPassenger(Passenger passenger) {
+    public void setPassenger(String passenger) {
         this.passenger = passenger;
     }
 
-    public Flight getFlight() {
+    public String getFlight() {
         return flight;
     }
 
-    public void setFlight(Flight flight) {
+    public void setFlight(String flight) {
         this.flight = flight;
     }
+
+
 }
