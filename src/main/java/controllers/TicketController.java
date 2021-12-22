@@ -67,33 +67,35 @@ public class TicketController implements Initializable {
             AddtoTable(ticKet);
             clearFields();
         }
-        //System.out.println(View.getFocusModel());
     }
     @FXML
     public void OnDeleteButton(){
-    /*
-        Ticket test = View.getSelectionModel().getSelectedItem();
-        System.out.println(test.getTicketID());
-        */
+        //Ticket test = View.getSelectionModel().getSelectedItem();
+        //System.out.println(test.getTicketID());
+        int row = View.getSelectionModel().getSelectedIndex();
+        try {
+            delete(row);
+        }
+        catch(Exception IndexOutOfBoundsException){
+            System.out.println("unselected row to delete");
+        }
+    }
+
+    public void AddtoTable(Ticket ticket){
+        data = View.getItems();
+        data.add(ticket);
+        View.setItems(data);
     }
 
     private void clearFields() {
         TicketField.clear();
         PassengerField.clear();
         FlightField.clear();
-    }
-    public void AddtoTable(Ticket ticket){
-        data = View.getItems();
-        data.add(ticket);
-        View.setItems(data);
-    }
-    /*
-    public void onDeleteButtonClick(ActionEvent actionEvent) {
-        ObservableList<Ticket> RowToremove = FXCollections.observableArrayList();
+        TicketField.requestFocus();
     }
 
-    private void SelectEvent() {
-        for(Ticket data : View.getSelectionModel().getSelectedItems());
-    }*/
+    public void delete(int row){
+        View.getItems().remove(row);
+    }
 }
 
