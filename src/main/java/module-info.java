@@ -7,7 +7,7 @@ module dashboards {
     opens dashboards to javafx.fxml;
     opens controllers to javafx.fxml;
     opens classes to javafx.fxml;
-    exports classes;
     exports dashboards;
     exports controllers;
+    exports classes;
 }

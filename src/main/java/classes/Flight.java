@@ -2,25 +2,20 @@ package classes;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Flight {
-    private int flightID;
+    private String flightID;
     private String source;
     private String destination;
     private Date departDate;
     private Date arrivingDate;
-    private Duration duration;
-    private int terminal;
-    private String status;
+    private String duration;
+    private String terminal;
     private String flightType;
-    private ArrayList<Passenger> passengers;
-    private Airline airline;
-    private Airport airport;
-    private Airplane airplane;
-    private Pilot pilot;
+    private String airportID;
+    private String airplaneID;
+    private int pilotID;
 
     /**
      * Constructors
@@ -28,23 +23,22 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(int flightID, String source, String destination, String departString, String arrivingString,
-                  Airline airline, Airport airport, Airplane airplane, Pilot pilot) throws ParseException {
+    public Flight(String flightID, String source, String destination, String departString, String arrivingString,
+                   String airportID, String airplaneID, int pilotID) throws ParseException {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
-        this.departDate = setDepartDate(departString);
-        this.arrivingDate = setArrivingDate(arrivingString);
+        setDepartDate(departString);
+        setArrivingDate(arrivingString);
         this.duration = duration();
-        this.airline = airline;
-        this.airport = airport;
-        this.airplane = airplane;
-        this.pilot = pilot;
+        this.airportID = airportID;
+        this.airplaneID = airplaneID;
+        this.pilotID = pilotID;
     }
 
-    public Flight(int flightID, String source, String destination, Date departDate, Date arrivingDate,
-                  int terminal, String status, String flightType, ArrayList<Passenger> passengers,
-                  Airline airline, Airport airport, Airplane airplane, Pilot pilot) {
+    public Flight(String flightID, String source, String destination, Date departDate, Date arrivingDate,
+                  String terminal, String airportID,
+                  String airplaneID, int pilotID) {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
@@ -52,37 +46,15 @@ public class Flight {
         this.arrivingDate = arrivingDate;
         this.duration = duration();
         this.terminal = terminal;
-        this.status = status;
-        this.flightType = flightType;
-        this.passengers = passengers;
-        this.airline = airline;
-        this.airport = airport;
-        this.airplane = airplane;
-        this.pilot = pilot;
-    }
-
-    public Flight(int flightID, String source, String destination, Date departDate, Date arrivingDate,
-                  int terminal, String status, String flightType, Airline airline, Airport airport,
-                  Airplane airplane, Pilot pilot) {
-        this.flightID = flightID;
-        this.source = source;
-        this.destination = destination;
-        this.departDate = departDate;
-        this.arrivingDate = arrivingDate;
-        this.duration = duration();
-        this.terminal = terminal;
-        this.status = status;
-        this.flightType = flightType;
-        this.airline = airline;
-        this.airport = airport;
-        this.airplane = airplane;
-        this.pilot = pilot;
+        this.airportID = airportID;
+        this.airplaneID = airplaneID;
+        this.pilotID = pilotID;
     }
 
     /**
-     * Duration Method
-     */
-    static Duration duration(Date startDate, Date endDate) {
+     * StringMethod
+
+    static String duration(Date startDate, Date endDate) {
         long differenceInTime = endDate.getTime() - startDate.getTime();
 
         long differenceInSeconds = (differenceInTime / 1000) % 60;
@@ -94,14 +66,14 @@ public class Flight {
                 + differenceInMinutes + "M" + differenceInSeconds + "S";
 
         return Duration.parse(durationString);
-    }
+    }*/
 
     /* Getters And Setters */
-    public int getFlightID() {
+    public String getFlightID() {
         return flightID;
     }
 
-    public void setFlightID(int flightID) {
+    public void setFlightID(String flightID) {
         this.flightID = flightID;
     }
 
@@ -137,28 +109,20 @@ public class Flight {
         this.arrivingDate = arrivingDate;
     }
 
-    public Duration getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(Duration duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
-    public int getTerminal() {
+    public String getTerminal() {
         return terminal;
     }
 
-    public void setTerminal(int terminal) {
+    public void setTerminal(String terminal) {
         this.terminal = terminal;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public String getFlightType() {
@@ -169,70 +133,56 @@ public class Flight {
         this.flightType = flightType;
     }
 
-    public ArrayList<Passenger> getPassengers() {
-        return passengers;
+    public String getAirportID() {
+        return airportID;
     }
 
-    public void setPassengers(ArrayList<Passenger> passengers) {
-        this.passengers = passengers;
+    public void setAirportID(String airportID) {
+        this.airportID = airportID;
     }
 
-    public Airline getAirline() {
-        return airline;
+    public String getAirplaneID() {
+        return airplaneID;
     }
 
-    public void setAirline(Airline airline) {
-        this.airline = airline;
+    public void setAirplaneID(String airplaneID) {
+        this.airplaneID = airplaneID;
     }
 
-    public Airport getAirport() {
-        return airport;
+    public int getPilotID() {
+        return pilotID;
     }
 
-    public void setAirport(Airport airport) {
-        this.airport = airport;
+    public void setPilotID(int pilotID) {
+        this.pilotID = pilotID;
     }
 
-    public Airplane getAirplane() {
-        return airplane;
+    public void setArrivingDate(String arrivingString) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        this.arrivingDate = formatter.parse(arrivingString);
     }
 
-    public void setAirplane(Airplane airplane) {
-        this.airplane = airplane;
+    public void setDepartDate(String departString) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        this.departDate = formatter.parse(departString);
     }
 
-    public Pilot getPilot() {
-        return pilot;
-    }
-
-    public void setPilot(Pilot pilot) {
-        this.pilot = pilot;
-    }
-
-    public Date setArrivingDate(String arrivingString) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
-        Date arriving = formatter.parse(arrivingString);
-        return arriving;
-    }
-
-    public Date setDepartDate(String departString) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
-        Date depart = formatter.parse(departString);
-        return depart;
-    }
-
-    public Duration duration() {
+    public String duration() {
         long differenceInTime = this.arrivingDate.getTime() - this.departDate.getTime();
 
-        long differenceInSeconds = (differenceInTime / 1000) % 60;
-        long differenceInMinutes = (differenceInTime / (1000 * 60)) % 60;
-        long differenceInHours = (differenceInTime / (1000 * 60 * 60)) % 24;
-        long differenceInDays = (differenceInTime / (1000 * 60 * 60 * 24)) % 365;
+        long differenceInSeconds = Math.abs((differenceInTime / 1000) % 60);
+        long differenceInMinutes = Math.abs((differenceInTime / (1000 * 60)) % 60);
+        long differenceInHours = Math.abs((differenceInTime / (1000 * 60 * 60)) % 24);
+        long differenceInDays = Math.abs((differenceInTime / (1000 * 60 * 60 * 24)) % 365);
 
-        String durationString = "P" + differenceInDays + "DT" + differenceInHours + "H"
-                + differenceInMinutes + "M" + differenceInSeconds + "S";
+        String DurationString = differenceInHours + "h"
+                + differenceInMinutes + "m" + differenceInSeconds + "s";
 
-        return Duration.parse(durationString);
+        if (differenceInDays != 0 ) {
+            DurationString = differenceInDays + "D" + differenceInHours + "h"
+                    + differenceInMinutes + "m" + differenceInSeconds + "s";
+        }
+        return DurationString;
 
     }
 }
