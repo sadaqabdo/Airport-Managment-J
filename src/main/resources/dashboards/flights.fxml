@@ -67,7 +67,7 @@
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="addDepartDate" alignment="CENTER_RIGHT" maxHeight="24.0" maxWidth="140.0" minHeight="24.0" minWidth="140.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="24.0" prefWidth="140.0" promptText="YYYY:MM:dd HH:MM:SS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                  <TextField fx:id="adddepartDate" alignment="CENTER_RIGHT" maxHeight="24.0" maxWidth="140.0" minHeight="24.0" minWidth="140.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="24.0" prefWidth="140.0" promptText="YYYY:MM:dd HH:MM:SS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
@@ -78,12 +78,12 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="88.0" text="Destination" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="88.0" text="destination" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="addPilot" alignment="CENTER" layoutX="10.0" layoutY="175.0" text="Depart Date" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <Label fx:id="addpilot" alignment="CENTER" layoutX="10.0" layoutY="175.0" text="Depart Date" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -98,12 +98,12 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="36.0" prefWidth="69.0" style="-fx-padding: 10 0 10 0;" text="Terminal" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <Label alignment="CENTER" prefHeight="36.0" prefWidth="69.0" style="-fx-padding: 10 0 10 0;" text="terminal" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" style="-fx-padding: 10 0 10 0;" text="Pilot" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                  <Label alignment="CENTER" style="-fx-padding: 10 0 10 0;" text="pilot" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -113,7 +113,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="addArrivingDate" alignment="CENTER_RIGHT" maxHeight="24.0" maxWidth="140.0" minHeight="24.0" minWidth="140.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="24.0" prefWidth="140.0" promptText="YYYY:MM:dd HH:MM:SS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
+                  <TextField fx:id="addarrivingDate" alignment="CENTER_RIGHT" maxHeight="24.0" maxWidth="140.0" minHeight="24.0" minWidth="140.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="24.0" prefWidth="140.0" promptText="YYYY:MM:dd HH:MM:SS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
                      <font>
                         <Font size="11.0" />
                      </font>
@@ -121,21 +121,21 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </TextField>
-                  <ChoiceBox fx:id="add_Pilot" prefHeight="23.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <Label alignment="CENTER" style="-fx-padding: 10 0 10 0;" text="Airplane" textAlignment="CENTER" GridPane.rowIndex="6">
+                  <ChoiceBox fx:id="add_pilot" prefHeight="23.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label alignment="CENTER" style="-fx-padding: 10 0 10 0;" text="airplane" textAlignment="CENTER" GridPane.rowIndex="6">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="addAirplane" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Label alignment="CENTER" style="-fx-padding: 10 0 10 0;" text="Source" textAlignment="CENTER" GridPane.rowIndex="1">
+                  <ChoiceBox fx:id="addairplane" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label alignment="CENTER" style="-fx-padding: 10 0 10 0;" text="source" textAlignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="addTerminal" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <ChoiceBox fx:id="addSource" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <ChoiceBox fx:id="addDestination" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ChoiceBox fx:id="addterminal" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ChoiceBox fx:id="addsource" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ChoiceBox fx:id="adddestination" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Button fx:id="CloseBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" graphicTextGap="2.0" maxHeight="26.0" maxWidth="49.0" minWidth="50.0" mnemonicParsing="false" onAction="#onCloseAddBtn" prefHeight="26.0" prefWidth="50.0" style="-fx-background-color: none;" text="Close" textAlignment="CENTER" textFill="RED" GridPane.rowIndex="8">
                      <font>
                         <Font size="12.0" />
@@ -160,13 +160,16 @@
                <content>
                   <TableView fx:id="FlightTable" prefHeight="372.0" prefWidth="98.0">
                      <columns>
-                        <TableColumn fx:id="FlightID" prefWidth="75.0" text="FlightID" />
-                        <TableColumn fx:id="Source" prefWidth="75.0" text="Source" />
-                        <TableColumn fx:id="Destination" prefWidth="75.0" text="Destination" />
-                        <TableColumn fx:id="Terminal" prefWidth="75.0" text="Terminal" />
-                        <TableColumn fx:id="ArrrivingDate" prefWidth="75.0" text="ArrivingDate" />
-                        <TableColumn fx:id="DepartDate" prefWidth="75.0" text="DepartDate" />
-                        <TableColumn fx:id="Duration" prefWidth="75.0" text="Duration" />
+                        <TableColumn fx:id="flightID" prefWidth="75.0" text="flightID" />
+                        <TableColumn fx:id="source" prefWidth="75.0" text="source" />
+                        <TableColumn fx:id="destination" prefWidth="75.0" text="destination" />
+                        <TableColumn fx:id="arrivingDate" prefWidth="75.0" text="arrivingDate" />
+                        <TableColumn fx:id="departDate" prefWidth="75.0" text="departDate" />
+                        <TableColumn fx:id="duration" prefWidth="75.0" text="duration" />
+                        <TableColumn fx:id="terminal" prefWidth="75.0" text="terminal" />
+                        <TableColumn fx:id="pilot" prefWidth="75.0" text="pilot" />
+                        <TableColumn fx:id="airplane" prefWidth="75.0" text="airplane" />
+                        <TableColumn fx:id="airport" prefWidth="75.0" text="airportID" />
                      </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -195,9 +198,9 @@
                       <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" vgrow="SOMETIMES" />
                    </rowConstraints>
                    <children>
-                      <Label prefHeight="112.0" prefWidth="100.0" text="Source" textAlignment="CENTER" GridPane.rowIndex="1" />
+                      <Label prefHeight="112.0" prefWidth="100.0" text="source" textAlignment="CENTER" GridPane.rowIndex="1" />
                       <TextField minHeight="24.0" minWidth="125.0" prefHeight="24.0" prefWidth="125.0" promptText="Airport, city, country..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                      <Label layoutX="10.0" layoutY="88.0" prefHeight="40.0" prefWidth="182.0" text="Destination" textAlignment="CENTER" GridPane.rowIndex="2" />
+                      <Label layoutX="10.0" layoutY="88.0" prefHeight="40.0" prefWidth="182.0" text="destination" textAlignment="CENTER" GridPane.rowIndex="2" />
                       <TextField editable="false" layoutX="91.0" layoutY="71.0" minHeight="24.0" minWidth="125.0" prefHeight="24.0" prefWidth="125.0" promptText="Airport, city, country..." GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
                       <Label layoutX="10.0" layoutY="175.0" prefHeight="98.0" prefWidth="100.0" text="Date" textAlignment="CENTER" GridPane.rowIndex="3" />
                       <DatePicker fx:id="datepicker" maxHeight="24.0" maxWidth="125.0" prefHeight="24.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
