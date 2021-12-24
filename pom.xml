@@ -29,6 +29,11 @@
             <artifactId>javafx-fxml</artifactId>
             <version>17-ea+11</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.3.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.openjfx</groupId>

@@ -17,6 +17,8 @@
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:linux:17-ea+11" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:17-ea+11" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:linux:17-ea+11" level="project" />
+    <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.3.1" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.checkerframework:checker-qual:3.5.0" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:17-ea+11" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:linux:17-ea+11" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:23.0.0" level="project" />

@@ -1,21 +1,21 @@
 package controllers;
 
-import classes.Passenger;
 import classes.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class TicketController implements Initializable {
     // bring elements from FXML
+    @FXML private MenuItem ViewTicketMenu,AddTicketMenu,SearchTicketMenu;
     @FXML
-    private TextField TicketField, PassengerField, FlightField;
+    private TextField TicketField, PassengerField;
     @FXML
     private TableView<Ticket> View;
     @FXML
@@ -26,9 +26,11 @@ public class TicketController implements Initializable {
     private TableColumn<Ticket, String> flightcol;
     @FXML
     private Button DeleteBtn, AddBtn ;
+
     // initialize data in tableview each row is a ticket object
     ObservableList<Ticket> data = FXCollections.observableArrayList();
     ObservableList<Ticket> SelectedItem ;
+
     @Override
     public void initialize(URL url, ResourceBundle rb){
         // initialize each column values
@@ -46,7 +48,7 @@ public class TicketController implements Initializable {
         );
         TicketField.setTooltip(new Tooltip("enter ticket ID"));
         PassengerField.setTooltip(new Tooltip("enter passenger"));
-        FlightField.setTooltip(new Tooltip("enter Flight"));
+        TicketField.setTooltip(new Tooltip("enter Ticket"));
         View.setPlaceholder(new Label("No Ticket to display"));
 
         View.setItems(data);
@@ -54,9 +56,9 @@ public class TicketController implements Initializable {
     }
     @FXML
     public void onAddButtonClick() {
-        Ticket ticKet = new Ticket(TicketField.getText(), PassengerField.getText(), FlightField.getText());
+        Ticket ticKet = new Ticket(TicketField.getText(), PassengerField.getText(), TicketField.getText());
         // think about condition type of input later
-        if (TicketField.getText().isEmpty() || PassengerField.getText().isEmpty() || FlightField.getText().isEmpty()) {
+        if (TicketField.getText().isEmpty() || PassengerField.getText().isEmpty() || TicketField.getText().isEmpty()) {
             Alert a = new Alert(Alert.AlertType.NONE);
             a.setAlertType(Alert.AlertType.ERROR);
             a.setContentText("Tous les champs sont obligatoire");
@@ -90,7 +92,7 @@ public class TicketController implements Initializable {
     private void clearFields() {
         TicketField.clear();
         PassengerField.clear();
-        FlightField.clear();
+        TicketField.clear();
         TicketField.requestFocus();
     }
 

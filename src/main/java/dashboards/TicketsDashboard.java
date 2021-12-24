@@ -1,30 +1,23 @@
 package dashboards;
 
-import controllers.TicketController;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 public class TicketsDashboard extends Application{
 
     @Override
     public void start(Stage stage) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(TicketsDashboard.class.getResource("Ticket.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-            Image image = new Image("file:src/main/resources/dashboards/logo.png");
-
-            stage.setTitle("Airport Nameless");
+            Parent root = FXMLLoader.load(getClass().getResource("Ticket.fxml"));
+            Scene scene = new Scene(root, 800, 600);
+            stage.setTitle("helo");
             stage.setScene(scene);
-            stage.getIcons().add(image);
-
-            BorderPane root =new BorderPane();
+            stage.setResizable(true);
+            stage.setMaximized(true);
             stage.show();
-        } catch (IOException e) {
-            System.out.println(e.getCause());
-        }
+
     }
 }

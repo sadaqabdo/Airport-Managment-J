@@ -1,25 +1,22 @@
 package airportmanagment;
 
-import dashboards.FlightsDashboard;
-import dashboards.LoginDashboard;
-import classes.*;
 import dashboards.TicketsDashboard;
+import javafx.application.Application;
 
 import java.sql.Connection;
 
-import static javafx.application.Application.launch;
-
-public class Main {
+public class Main{
     public static void main(String[] args) {
+
         Connection con = DBConnection.getConnection();
         if (con == null) {
-            System.out.println("Connexion failed:");
+            System.out.println("Connexion failed");
         } else {
-            System.out.println("Connexion success:");
+            System.out.println("Connexion success");
+
         }
+        //DBConnection.getData();
+        Application.launch(TicketsDashboard.class);
 
-        launch(LoginDashboard.class, args);
     }
-    Employee e=new Employee();
-
 }

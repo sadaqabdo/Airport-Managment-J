@@ -26,3 +26,5 @@ hs_err_pid*
 .vscodetarget/
 out/
 target/
+pom.xml
+src/java/airportmanagement/*
