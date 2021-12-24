@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 public class TicketController implements Initializable {
     // bring elements from FXML
+    @FXML private MenuItem ViewFlightMenu,AddFlightMenu,SearchFlightMenu;
     @FXML private MenuItem ViewTicketMenu,AddTicketMenu,SearchTicketMenu;
     @FXML
     private TextField TicketField, PassengerField;
@@ -20,6 +21,7 @@ public class TicketController implements Initializable {
     private TableView<Ticket> View;
     @FXML
     private TableColumn<Ticket, String> ticketcol;
+
     @FXML
     private TableColumn<Ticket, String> passengercol;
     @FXML
@@ -99,5 +101,19 @@ public class TicketController implements Initializable {
     public void delete(int row){
         View.getItems().remove(row);
     }
+    @FXML
+    private void SearchTicketMenuClbck(){}
+    @FXML
+    private void ViewTicketMenuClbck(){
+    }
+    @FXML
+    private void AddTicketMenuClbck(){}
+    @FXML
+    private void SearchFlightMenuClbck(){}
+    @FXML
+    private void ViewFlightMenuClbck(){
+    }
+    @FXML
+    private void AddFlightMenuClbck(){}
 }
 

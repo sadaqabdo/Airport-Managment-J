@@ -23,6 +23,8 @@ public class FlightsController implements Initializable {
     @FXML private VBox vb;
     @FXML private GridPane addGrid,searchGrid;
     @FXML private MenuItem ViewFlightMenu,AddFlightMenu,SearchFlightMenu;
+    @FXML private MenuItem ViewTicketMenu,AddTicketMenu,SearchTicketMenu;
+
     @FXML private ChoiceBox addsource,adddestination,addterminal,addairplane,add_Pilot;
     @FXML private TextField addDepartDate,addArrivingDate;
     @FXML private TableView<Flight> FlightTable;
@@ -126,6 +128,19 @@ public class FlightsController implements Initializable {
     }
     @FXML
     private void AddFlightMenuClbck(){
+        addGrid.setMinWidth(260);
+        addGrid.setMaxWidth(460);
+    }
+    @FXML
+    private void SearchTicketMenuClbck(){
+        searchGrid.setMinWidth(260);
+        searchGrid.setMaxWidth(460);
+    }
+    @FXML
+    private void ViewTicketMenuClbck(){
+    }
+    @FXML
+    private void AddTicketMenuClbck(){
         addGrid.setMinWidth(260);
         addGrid.setMaxWidth(460);
     }
