@@ -1,16 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controllers.LoginController">
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-   </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-   <Label fx:id="welcomeText"/>
-   <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+   <children>
+      <Label layoutX="421.0" layoutY="89.0" text="Login" textFill="#3971a1">
+         <font>
+            <Font name="Arial Black" size="32.0" />
+         </font>
+      </Label>
+      <Button fx:id="button_login" layoutX="426.0" layoutY="347.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #3971a1;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TextField fx:id="tf_username" layoutX="381.0" layoutY="197.0" prefHeight="39.0" prefWidth="176.0" promptText="username" />
+      <ImageView fitHeight="72.0" fitWidth="61.0" layoutX="296.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/login.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="51.0" layoutX="304.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/username.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="tf_password" layoutX="381.0" layoutY="267.0" prefHeight="39.0" prefWidth="176.0" promptText="password" />
+      <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="300.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/password.png" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="481.0" prefWidth="245.0" scaleShape="false" style="-fx-background-color: #3971a1;">
+         <children>
+            <Label layoutX="68.0" layoutY="205.0" text="Airport " textFill="#434343" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="261.0" text="Management" textFill="#434343" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="30.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="107.0" fitWidth="109.0" layoutX="62.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 70;">
+               <image>
+                  <Image url="@../images/airplane.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

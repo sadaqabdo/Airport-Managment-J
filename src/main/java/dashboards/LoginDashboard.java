@@ -1,38 +1,27 @@
 package dashboards;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.util.Objects;
 
-
-public class LoginDashboard extends Application{
-
+public class LoginDashboard extends Application {
     @Override
-    public void start(Stage stage)  throws IOException{
+    public void start(Stage stage) throws Exception {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginDashboard.class.getResource("login.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-            stage.setTitle("Hello!");
-            stage.setScene(scene);
+            Parent root = FXMLLoader.load(LoginDashboard.class.getResource("login.fxml"));
+            Scene scene = new Scene(root);
 
-            BorderPane root =new BorderPane();
+            stage.setTitle("Login");
+            stage.setResizable(false);
+            stage.setScene(scene);
             stage.show();
         }catch (IOException e){
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
-
     }
-
-
 }
