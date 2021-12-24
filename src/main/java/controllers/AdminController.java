@@ -1,6 +1,6 @@
 package controllers;
 import airportmanagment.DBConnection;
-import airportmanagment.DBUtils;
+import airportmanagment.DBMethodes;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,7 +23,7 @@ public class AdminController implements Initializable {
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBConnection.changeScene(event, "login.fxml", "login",null );
+                DBMethodes.changeScene(event, "login.fxml", "login",null );
             }
         });
     }

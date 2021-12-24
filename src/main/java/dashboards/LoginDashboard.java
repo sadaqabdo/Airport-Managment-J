@@ -13,8 +13,10 @@ public class LoginDashboard extends Application {
     public void start(Stage stage) throws Exception {
         try {
             Parent root = FXMLLoader.load(LoginDashboard.class.getResource("login.fxml"));
-            Scene scene = new Scene(root, 600, 600);
-            stage.setTitle("helo");
+            Scene scene = new Scene(root);
+
+            stage.setTitle("Login");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){
