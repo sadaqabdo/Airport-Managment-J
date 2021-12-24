@@ -1,0 +1,23 @@
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+
+<MenuBar xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <menus>
+      <Menu fx:id="Flight" mnemonicParsing="false" text="Flight">
+         <items>
+            <MenuItem fx:id="ViewFlightMenu" mnemonicParsing="false" onAction="#ViewFlightMenuClbck" text="View" />
+            <MenuItem fx:id="AddFlightMenu" mnemonicParsing="false" onAction="#AddFlightMenuClbck" text="Add" />
+            <MenuItem fx:id="SearchFlightMenu" mnemonicParsing="false" onAction="#SearchFlightMenuClbck" text="Search" />
+         </items>
+      </Menu>
+      <Menu fx:id="Ticket" mnemonicParsing="false" text="Ticket">
+              <items>
+              <MenuItem fx:id="ViewTicketMenu" mnemonicParsing="false" onAction="#ViewTicketMenuClbck" text="View" />
+              <MenuItem fx:id="AddTicketMenu" mnemonicParsing="false" onAction="#AddTicketMenuClbck" text="Add" />
+              <MenuItem fx:id="SearchTicketMenu" mnemonicParsing="false" onAction="#SearchTicketMenuClbck" text="Search" />
+              </items>
+        </Menu>
+   </menus>
+</MenuBar>

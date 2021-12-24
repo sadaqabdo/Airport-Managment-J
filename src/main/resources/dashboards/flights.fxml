@@ -26,17 +26,8 @@
        <!--
         Menu
        -->
-       <MenuBar layoutX="-1.0" layoutY="1.0">
-               <menus>
-                  <Menu fx:id="Flight" mnemonicParsing="false" text="Flight">
-                     <items>
-                        <MenuItem fx:id="ViewFlightMenu" mnemonicParsing="false" onAction="#ViewFlightMenuClbck" text="View" />
-                        <MenuItem fx:id="AddFlightMenu" mnemonicParsing="false" onAction="#AddFlightMenuClbck" text="Add" />
-                        <MenuItem fx:id="SearchFlightMenu" mnemonicParsing="false" onAction="#SearchFlightMenuClbck" text="Search" />
-                     </items>
-                  </Menu>
-               </menus>
-       </MenuBar>
+       <fx:include source="Menubar.fxml" fx:id="menubar"/>
+
        <!--
        EndMenu
        -->
