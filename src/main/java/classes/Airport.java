@@ -6,12 +6,7 @@ public class Airport {
     private String city;
     private String country;
 
-    public Airport(int apID, String apName, String city, String country) {
-        this.apID = apID;
-        this.apName = apName;
-        this.city = city;
-        this.country = country;
-    }
+
 
     public int getApID() {
         return apID;

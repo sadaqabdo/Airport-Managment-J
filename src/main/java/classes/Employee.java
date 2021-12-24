@@ -33,50 +33,6 @@ public class Employee extends Person {
 
 }
 
-/*
-public class Employee{
-
-    private int id;
-    private String name;
-    private String job;
-
-    //default Constructor
-    public Employee(){
-
-    }
-    //Constructor
-    public Employee(int id, String name, String job){
-        this.id=id;
-        this.name=name;
-        this.job=job;
-    }
-    //setters
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    //getters
-    public int getId() {
-        return id;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public String getName() {
-        return name;
-    }
-}
-*/
 
 
 

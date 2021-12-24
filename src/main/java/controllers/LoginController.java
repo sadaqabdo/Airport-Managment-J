@@ -2,7 +2,7 @@ package controllers;
 
 
 import airportmanagment.DBConnection;
-import airportmanagment.DBUtils;
+import airportmanagment.DBMethodes;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -39,7 +39,7 @@ public class LoginController implements Initializable {
         button_login.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBConnection.logInUser(event,tf_username.getText(), tf_password.getText());
+                DBMethodes.logInUser(event,tf_username.getText(), tf_password.getText());
             }
 
         });
