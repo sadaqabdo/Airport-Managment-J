@@ -13,7 +13,6 @@ public class FlightsDashboard extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("flights.fxml"));
         Scene scene = new Scene(root, 800, 600);
-
         stage.setTitle("helo");
         stage.setScene(scene);
         stage.setResizable(true);
@@ -21,6 +20,3 @@ public class FlightsDashboard extends Application {
         stage.show();
     }
 }
-
-
-

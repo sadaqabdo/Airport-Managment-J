@@ -1,6 +1,5 @@
 package controllers;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,11 +9,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginController {
+public class TicketsController {
+
     private Stage stage;
     private Scene scene;
     public Parent root;
-
 
     public void backToMain(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/dashboards/Main.fxml"));

@@ -7,12 +7,20 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.css.SimpleStyleableObjectProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,15 +32,27 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class FlightsController implements Initializable {
-    @FXML private Menu Flight;
-    @FXML private VBox vb;
-    @FXML private GridPane addGrid,searchGrid;
-    @FXML private MenuItem ViewFlightMenu,AddFlightMenu,SearchFlightMenu;
-    @FXML private ChoiceBox addSource,addDestination,addTerminal,addAirplane,add_Pilot;
-    @FXML private TextField addDepartDate,addArrivingDate;
-    @FXML private TableView<Airport> FlightTable;
-    @FXML private TableColumn<Airport,String> Source ;
-    @FXML private TableColumn<Airport,String> Destination ;
+    @FXML
+    private Menu Flight;
+    @FXML
+    private VBox vb;
+    @FXML
+    private GridPane addGrid, searchGrid;
+    @FXML
+    private MenuItem ViewFlightMenu, AddFlightMenu, SearchFlightMenu;
+    @FXML
+    private ChoiceBox addSource, addDestination, addTerminal, addAirplane, add_Pilot;
+    @FXML
+    private TextField addDepartDate, addArrivingDate;
+    @FXML
+    private TableView<Airport> FlightTable;
+    @FXML
+    private TableColumn<Airport, String> Source;
+    @FXML
+    private TableColumn<Airport, String> Destination;
+
+    private Stage stage;
+    private Scene scene;
 
     private ObservableList<Airport> data;
 
@@ -69,7 +89,10 @@ public class FlightsController implements Initializable {
             FlightTable.setItems(data);
             ObservableList observableList = FXCollections.observableList(list);
             addSource.setItems(observableList);
+            rs.close();
+            st.close();
         }
+
         catch(Exception e){
             e.printStackTrace();
             System.out.println("Error on Building Data");
@@ -103,4 +126,13 @@ public class FlightsController implements Initializable {
         addDestination.setValue(addSource.getValue());
     }
 
+
+    public void backToMain(ActionEvent event) throws IOException {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/dashboards/Main.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
