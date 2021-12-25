@@ -125,8 +125,11 @@ public class FlightsController implements Initializable {
             Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
             PreparedStatement preparedStatement=null;
+
             if ((Flight)obj instanceof Flight){
-                String sql = "Insert into Flight values(?,?,?,?,?,?,?,?,?,?);";
+                String sql = "Insert into Flight(flightid,source,destination,departdate," +
+                        "arrivingdate,duration,terminal,airpotid,pilotid,airplaneid)" +
+                        "values(?,?,?,?,?,?,?,?,?,?);";
                 int resultSet = 0;
                 System.out.print(((Flight) obj).getPilotID());
                 System.out.println(((Flight) obj).getFlightID());
@@ -135,13 +138,14 @@ public class FlightsController implements Initializable {
                 preparedStatement.setString(1, ((Flight) obj).getFlightID());
                 preparedStatement.setString(2,  ((Flight) obj).getSource());
                 preparedStatement.setString(3, ((Flight) obj).getDestination());
-                preparedStatement.setString(4, ((Flight) obj).getTerminal());
-                preparedStatement.setString(5, ((Flight) obj).getAirplaneID());
-                preparedStatement.setInt(6, ((Flight) obj).getPilotID());
-                preparedStatement.setString(7, "null");
-                preparedStatement.setString(8, ((Flight) obj).getDuration());
-                preparedStatement.setString(9, ((Flight) obj).getArrivingDate().toString());
-                preparedStatement.setString(10, ((Flight) obj).getDepartDate().toString());
+                preparedStatement.setString(4, ((Flight) obj).getDepartDate().toString());
+                preparedStatement.setString(5, ((Flight) obj).getArrivingDate().toString());
+                preparedStatement.setString(6, ((Flight) obj).getDuration());
+                preparedStatement.setString(7, ((Flight) obj).getTerminal());
+                preparedStatement.setString(8, "null");
+                preparedStatement.setInt(9, ((Flight) obj).getPilotID());
+                preparedStatement.setString(10, ((Flight) obj).getAirplaneID());
+
                 resultSet=preparedStatement.executeUpdate();
                 System.out.println("A new record was inserted successfully!");
                 con.close();
