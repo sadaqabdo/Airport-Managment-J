@@ -13,7 +13,7 @@ public class MainDashboard extends Application{
     @Override
     public void start(Stage stage) throws IOException{
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainDashboard.class.getResource("Ticket.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainDashboard.class.getResource("Main.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 800, 700);
             stage.setTitle("Airport Nameless");
             stage.setScene(scene);

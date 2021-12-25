@@ -1,32 +1,44 @@
 package controllers;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class MainController {
 
-    @FXML private MenuItem ViewFlightMenu,AddFlightMenu,SearchFlightMenu;
-    @FXML private MenuItem ViewTicketMenu,AddTicketMenu,SearchTicketMenu;
-    @FXML
-    private void SearchFlightMenuClbck(){
+    private Stage stage;
+    private Scene scene;
+    public Parent root;
 
-    }
-    @FXML
-    private void ViewFlightMenuClbck(){
-    }
-    @FXML
-    private void AddFlightMenuClbck(){
 
+    public void switchToFlights(ActionEvent event) throws IOException {
+    
+        root = FXMLLoader.load(getClass().getResource("/dashboards/flights.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-    @FXML
-    private void SearchTicketMenuClbck(){
+    public void switchToLogin(ActionEvent event) throws IOException {
 
+        root = FXMLLoader.load(getClass().getResource("/dashboards/login.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-    @FXML
-    private void ViewTicketMenuClbck(){
-    }
-    @FXML
-    private void AddTicketMenuClbck(){
+    public void switchToEmployees(ActionEvent event) throws IOException {
 
+        root = FXMLLoader.load(getClass().getResource("/dashboards/employees.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
+
 }

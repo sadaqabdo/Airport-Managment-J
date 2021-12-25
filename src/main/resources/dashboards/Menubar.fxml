@@ -9,6 +9,12 @@
          <items>
             <MenuItem fx:id="ViewFlightMenu" mnemonicParsing="false" onAction="#ViewFlightMenuClbck" text="View" />
             <MenuItem fx:id="AddFlightMenu" mnemonicParsing="false" onAction="#AddFlightMenuClbck" text="Add" />
+            <MenuItem fx:id="SearchFlightMenu" mnemonicParsing=mlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controllers.MainController" >
+   <menus>
+      <Menu fx:id="Flight" mnemonicParsing="false" text="Flight">
+         <items>
+            <MenuItem fx:id="ViewFlightMenu" mnemonicParsing="false" onAction="#ViewFlightMenuClbck" text="View" />
+            <MenuItem fx:id="AddFlightMenu" mnemonicParsing="false" onAction="#AddFlightMenuClbck" text="Add" />
             <MenuItem fx:id="SearchFlightMenu" mnemonicParsing="false" onAction="#SearchFlightMenuClbck" text="Search" />
          </items>
       </Menu>

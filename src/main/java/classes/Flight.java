@@ -1,5 +1,6 @@
 package classes;
 
+import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,8 +24,20 @@ public class Flight {
     public Flight() {
     }
 
+    public Flight(String source, String destination, String departString, String arrivingString,
+                  String airportID, String airplaneID, int pilotID) throws ParseException {
+        setFlightID();
+        this.source = source;
+        this.destination = destination;
+        setDepartDate(departString);
+        setArrivingDate(arrivingString);
+        this.duration = duration();
+        this.airportID = airportID;
+        this.airplaneID = airplaneID;
+        this.pilotID = pilotID;
+    }
     public Flight(String flightID, String source, String destination, String departString, String arrivingString,
-                   String airportID, String airplaneID, int pilotID) throws ParseException {
+                       String airportID, String airplaneID, int pilotID) throws ParseException {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
@@ -149,7 +162,7 @@ public class Flight {
         this.airplaneID = airplaneID;
     }
 
-    public int getPilotID() {
+    public Integer getPilotID() {
         return pilotID;
     }
 
@@ -159,12 +172,28 @@ public class Flight {
 
     public void setArrivingDate(String arrivingString) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        this.arrivingDate = formatter.parse(arrivingString);
+        SimpleDateFormat formatter2 = new SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy");
+
+        arrivingString.strip();
+        try {
+            this.arrivingDate = formatter.parse(arrivingString);
+        }catch (ParseException e){
+            this.arrivingDate = formatter2.parse(arrivingString);
+
+        }
+
     }
 
     public void setDepartDate(String departString) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        this.departDate = formatter.parse(departString);
+        SimpleDateFormat formatter2 = new SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy");
+        departString.strip();
+        try {
+            this.departDate = formatter.parse(departString);
+        }catch (ParseException e){
+            this.departDate = formatter2.parse(departString);
+        }
+
     }
 
     public String duration() {
@@ -183,6 +212,16 @@ public class Flight {
                     + differenceInMinutes + "m" + differenceInSeconds + "s";
         }
         return DurationString;
+    }
+    public void setFlightID(){
+        final String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        final String A1 = "0123456789";
+        SecureRandom rnd = new SecureRandom();
+
+        StringBuilder sb = new StringBuilder(4);
+        for(int i = 0; i < 2; i++) {sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        sb.append(A1.charAt(rnd.nextInt(A1.length())));};
+        this.flightID = sb.toString();
 
     }
 }
