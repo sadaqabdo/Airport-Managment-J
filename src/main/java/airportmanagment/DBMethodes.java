@@ -41,7 +41,7 @@ public class DBMethodes {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            preparedStatement = con.prepareStatement("SELECT password FROM employee WHERE username = ?");
+            preparedStatement = con.prepareStatement("SELECT password FROM employee WHERE name = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.isBeforeFirst()) {

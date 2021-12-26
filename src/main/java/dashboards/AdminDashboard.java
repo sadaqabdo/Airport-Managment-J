@@ -6,18 +6,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-    public class MainDashboard extends Application {
+import java.io.IOException;
+
+public class AdminDashboard extends Application {
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws Exception {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+            Parent root = FXMLLoader.load(AdminDashboard.class.getResource("admin.fxml"));
             Scene scene = new Scene(root);
+
+            stage.setTitle("Admin");
+            stage.setResizable(false);
             stage.setScene(scene);
-            stage.setResizable(true);
-            stage.setMaximized(true);
             stage.show();
-        } catch(Exception e) {
+        }catch (IOException e){
             e.printStackTrace();
         }
+
     }
 }
