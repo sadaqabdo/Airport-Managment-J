@@ -9,33 +9,3 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-
-<GridPane alignment="CENTER" maxHeight="373.0" maxWidth="358.0" minHeight="367.0" minWidth="219.0" prefHeight="373.0" prefWidth="249.0" style="-fx-padding: 50 0 50 0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="79.0" />
-      <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="140.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints maxHeight="187.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="294.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="294.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="294.0" minHeight="10.0" prefHeight="153.0" vgrow="SOMETIMES" />
-   </rowConstraints>
-   <children>
-      <Label alignment="CENTER" prefHeight="49.0" prefWidth="99.0" text="Source" GridPane.rowIndex="1" />
-      <TextField minHeight="24.0" minWidth="125.0" prefHeight="24.0" prefWidth="125.0" promptText="Airport, city, country..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Label alignment="CENTER" layoutX="10.0" layoutY="88.0" prefHeight="30.0" prefWidth="84.0" text="Destination" textAlignment="CENTER" GridPane.rowIndex="2" />
-      <TextField editable="false" layoutX="91.0" layoutY="71.0" minHeight="24.0" minWidth="125.0" prefHeight="24.0" prefWidth="125.0" promptText="Airport, city, country..." GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
-      <Label alignment="CENTER" layoutX="10.0" layoutY="175.0" prefHeight="31.0" prefWidth="116.0" text="Date" GridPane.rowIndex="3" />
-      <DatePicker fx:id="datepicker" maxHeight="24.0" maxWidth="125.0" prefHeight="24.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-      <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="10.0" layoutY="225.0" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="100.0" text="Search" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-   </children>
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
-</GridPane>
