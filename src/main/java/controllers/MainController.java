@@ -16,7 +16,7 @@ public class MainController {
     private Scene scene;
     public Parent root;
 
-    public void switchToTicket(ActionEvent event) throws IOException {
+    public void switchToTickets(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/dashboards/Ticket.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
