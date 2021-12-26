@@ -11,6 +11,10 @@ public class Ticket {
         this.flight = flight;
     }
 
+    public Ticket() {
+
+    }
+
     public String getTicketID() {
         return ticketID;
     }

@@ -15,22 +15,19 @@ import java.sql.*;
 
 public class DBConnection {
 
-    private static final String HOST = "localhost";
+    private static final String HOST = "127.0.0.1";
     private static final int PORT = 3306;
-    private static final String DB_NAME = "airport_management_db";
+    private static final String DB_NAME = "tickets";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "ewingkncks33 pa";
 
     private static Connection connection;
     Statement stm;
     ResultSet rst;
 
     public static Connection getConnection() {
-        // "jdbc:oracle:thin:@localhost:1521:XE"
-        // jdbc:mysql://localhost:3306/airport_management_db
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
-            //connection = DriverManager.getConnection("jdbc:oracle:thin:@" + HOST + ":" + PORT + ":XE", USERNAME, PASSWORD);
+            connection = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME+"?serverTimezone=UTC", USERNAME, PASSWORD);
         } catch (SQLException se) {
             System.out.println("Connexion failed:" + se);
         }
@@ -53,9 +50,7 @@ public class DBConnection {
         }catch (Exception e){
             System.out.println("Scene error");
         }
-
     }
-
     public static void logInUser(ActionEvent event, String username, String password){
         Connection con = DBConnection.getConnection();
         PreparedStatement preparedStatement=null;
@@ -68,7 +63,7 @@ public class DBConnection {
                 System.out.println("user not found");
                 Alert alert=new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("error");
-                alert.show();
+            alert.show();
             }else{
                 while (resultSet.next()){
                     String rPassword=resultSet.getString("password");
