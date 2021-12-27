@@ -240,4 +240,8 @@ public class Flight {
         this.flightID = sb.toString();
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 0ae16ad6cf5c29d5dbdc77d3b81b0b5751494b87
