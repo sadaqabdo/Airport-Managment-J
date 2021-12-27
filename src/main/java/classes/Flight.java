@@ -229,15 +229,15 @@ public class Flight {
         }
         return DurationString;
     }
-    public void setFlightID(){
+    public void setFlightID() {
         final String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         final String A1 = "0123456789";
         SecureRandom rnd = new SecureRandom();
 
         StringBuilder sb = new StringBuilder(4);
-        for(int i = 0; i < 2; i++) {sb.append(AB.charAt(rnd.nextInt(AB.length())));
-        sb.append(A1.charAt(rnd.nextInt(A1.length())));}
+        for (int i = 0; i < 2; i++) {
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+            sb.append(A1.charAt(rnd.nextInt(A1.length())));
+        }
         this.flightID = sb.toString();
-
-    }
-}
+    }}
