@@ -1,35 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@sadaqabdo 
-sadaqabdo
-/
-Airport-Managment-J
-Private
-Code
-Issues
-Pull requests
-1
-Actions
-Projects
-4
-Security
-Insights
-Settings
-Airport-Managment-J/src/main/java/classes/Flight.java /
-@sadaqabdo
-sadaqabdo Merge pull request #7 from sadaqabdo/sadaq-develop
-…
-Latest commit 0c6b1dc 12 minutes ago
- History
- 2 contributors
-@sadaqabdo@HAMZA-ELHARCHI-ELMASLOHI
-247 lines (203 sloc)  7.55 KB
-  
 package classes;
 
 import java.security.SecureRandom;
@@ -273,16 +241,3 @@ public class Flight {
 
     }
 }
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
