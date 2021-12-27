@@ -4,6 +4,8 @@ module dashboards {
     requires javafx.graphics;
     requires javafx.controls;
     requires com.jfoenix;
+    requires java.base;
+    requires jfxtras.controls;
 
     opens dashboards to javafx.fxml;
     opens controllers to javafx.fxml;

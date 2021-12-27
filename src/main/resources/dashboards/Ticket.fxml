@@ -18,7 +18,7 @@
 
 <VBox fx:id="vb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TicketsController">
   <children>
-      <!--
+
       <MenuBar>
                 <Menu fx:id="Flight" mnemonicParsing="false" text="Flight">
                         <items>
@@ -36,7 +36,7 @@
                        </Menu>
 
       </MenuBar>
-      -->
+
 
       <SplitPane dividerPositions="0.3" prefHeight="375.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
          <items>

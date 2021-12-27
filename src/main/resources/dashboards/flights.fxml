@@ -2,10 +2,10 @@
 
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import jfxtras.scene.control.*?>
 
 <VBox fx:id="vb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlightsController">
    <children>
@@ -36,19 +36,20 @@
        <!--
        SplitPane
        -->
-        <SplitPane fx:id="SplitPanee" dividerPositions="0.3, 0.5" VBox.vgrow="ALWAYS">
+        <SplitPane fx:id="SplitPanee" dividerPositions="0.3" VBox.vgrow="ALWAYS">
         <items>
 
             <!--
              GridPane AddFlight
              -->
-            <GridPane fx:id="addGrid" alignment="CENTER" prefHeight="317.0" prefWidth="242.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+            <GridPane fx:id="addGrids" alignment="CENTER" prefHeight="317.0" prefWidth="242.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
-                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="150.0" prefWidth="140.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="150.0" prefWidth="140.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints />
+                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
@@ -69,11 +70,6 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="Addbtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="10.0" layoutY="225.0" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" onAction="#onAddFlight" prefHeight="24.0" prefWidth="100.0" text="Add" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
                   <Label alignment="CENTER" style="-fx-padding: 10 0 10 0;" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
@@ -94,14 +90,6 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="addarrivingDate" alignment="CENTER_RIGHT" maxHeight="24.0" maxWidth="140.0" minHeight="24.0" minWidth="140.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="24.0" prefWidth="140.0" promptText="YYYY:MM:dd HH:MM:SS" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="4" GridPane.valignment="CENTER" GridPane.vgrow="SOMETIMES">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                  </TextField>
                   <ChoiceBox fx:id="add_pilot" prefHeight="23.0" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <Label alignment="CENTER" style="-fx-padding: 10 0 10 0;" text="airplane" textAlignment="CENTER" GridPane.rowIndex="6">
                      <font>
@@ -117,11 +105,11 @@
                   <ChoiceBox fx:id="addterminal" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <ChoiceBox fx:id="addsource" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <ChoiceBox fx:id="adddestination" prefHeight="23.0" prefWidth="132.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button fx:id="CloseBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" graphicTextGap="2.0" maxHeight="26.0" maxWidth="49.0" minWidth="50.0" mnemonicParsing="false" onAction="#onCloseAddBtn" prefHeight="26.0" prefWidth="50.0" style="-fx-background-color: none;" text="Close" textAlignment="CENTER" textFill="RED" GridPane.rowIndex="8">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Button>
+                  <JFXButton fx:id="CloseBtn" buttonType="RAISED" cancelButton="true" lineSpacing="2.0" onAction="#onCloseAddBtn" prefHeight="23.0" prefWidth="64.0" ripplerFill="RED" style="-fx-background-color: red;" text="Close" textAlignment="CENTER" textFill="#5b3131" GridPane.rowIndex="9" />
+                  <JFXButton fx:id="Addbtn" buttonType="RAISED" maxWidth="80.0" minWidth="80.0" onAction="#onAddFlight" prefHeight="23.0" prefWidth="80.0" ripplerFill="RED" style="-fx-background-color: Green;" text="Add" textAlignment="CENTER" textFill="WHITE" viewOrder="1.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <LocalDateTimeTextField fx:id="adddepartDate" maxWidth="137.0" minWidth="12.0" prefHeight="40.0" prefWidth="137.0" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <LocalDateTimeTextField fx:id="addarrivingDate" maxWidth="137.0" minWidth="12.0" prefHeight="40.0" prefWidth="137.0" text="" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+                  <JFXButton fx:id="searchBtn" buttonType="RAISED" maxWidth="80.0" minWidth="80.0" onAction="#onsearchflight" prefHeight="23.0" prefWidth="80.0" ripplerFill="RED" style="-fx-background-color: Blue;" text="Search" textAlignment="CENTER" textFill="WHITE" viewOrder="1.0" GridPane.rowIndex="8" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -132,69 +120,25 @@
             </GridPane>
             <JFXScrollPane>
                <children>
-                  <JFXTreeTableView />
                   <TableView fx:id="FlightTable" prefHeight="372.0" prefWidth="98.0">
-                     <columns>
-                        <TableColumn fx:id="flightID" prefWidth="75.0" text="flightID" />
-                        <TableColumn fx:id="source" prefWidth="75.0" text="source" />
-                        <TableColumn fx:id="destination" prefWidth="75.0" text="destination" />
-                        <TableColumn fx:id="arrivingDate" prefWidth="75.0" text="arrivingDate" />
-                        <TableColumn fx:id="departDate" prefWidth="75.0" text="departDate" />
-                        <TableColumn fx:id="duration" prefWidth="75.0" text="duration" />
-                        <TableColumn fx:id="terminal" prefWidth="75.0" text="terminal" />
-                        <TableColumn fx:id="pilot" prefWidth="75.0" text="pilot" />
-                        <TableColumn fx:id="airplane" prefWidth="75.0" text="airplane" />
-                        <TableColumn fx:id="airport" prefWidth="75.0" text="airportID" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
+                            <columns>
+                               <TableColumn fx:id="flightID" prefWidth="75.0" text="flightID" />
+                               <TableColumn fx:id="source" prefWidth="75.0" text="source" />
+                               <TableColumn fx:id="destination" prefWidth="75.0" text="destination" />
+                               <TableColumn fx:id="arrivingDate" prefWidth="75.0" text="arrivingDate" />
+                               <TableColumn fx:id="departDate" prefWidth="75.0" text="departDate" />
+                               <TableColumn fx:id="duration" prefWidth="75.0" text="duration" />
+                               <TableColumn fx:id="terminal" prefWidth="75.0" text="terminal" />
+                               <TableColumn fx:id="pilot" prefWidth="75.0" text="pilot" />
+                               <TableColumn fx:id="airplane" prefWidth="75.0" text="airplane" />
+                               <TableColumn fx:id="airport" prefWidth="75.0" text="airportID" />
+                            </columns>
+                            <columnResizePolicy>
+                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                         </TableView>
                </children>
             </JFXScrollPane>
-        <!--
-         End Table Flight
-         -->
-
-        <!--
-         GridPane SearchFlight
-         -->
-        <GridPane fx:id="searchGrid" alignment="CENTER" cacheHint="SPEED" maxHeight="373.0" maxWidth="250.0" minHeight="367.0" minWidth="230.0" prefHeight="372.0" prefWidth="260.0" style="-fx-padding: 50 0 50 0;" vgap="2.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-                   <columnConstraints>
-                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
-                      <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
-                   </columnConstraints>
-                   <rowConstraints>
-                      <RowConstraints />
-                      <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="294.0" minHeight="6.0" prefHeight="96.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                   </rowConstraints>
-                   <children>
-                      <Label prefHeight="112.0" prefWidth="100.0" text="source" textAlignment="CENTER" GridPane.rowIndex="1" />
-                      <TextField minHeight="24.0" minWidth="125.0" prefHeight="24.0" prefWidth="125.0" promptText="Airport, city, country..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                      <Label layoutX="10.0" layoutY="88.0" prefHeight="40.0" prefWidth="182.0" text="destination" textAlignment="CENTER" GridPane.rowIndex="2" />
-                      <TextField editable="false" layoutX="91.0" layoutY="71.0" minHeight="24.0" minWidth="125.0" prefHeight="24.0" prefWidth="125.0" promptText="Airport, city, country..." GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS" />
-                      <Label layoutX="10.0" layoutY="175.0" prefHeight="98.0" prefWidth="100.0" text="Date" textAlignment="CENTER" GridPane.rowIndex="3" />
-                      <DatePicker fx:id="datepicker" maxHeight="24.0" maxWidth="125.0" prefHeight="24.0" prefWidth="125.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
-                      <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="10.0" layoutY="225.0" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="100.0" text="Search" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-                         <font>
-                            <Font size="14.0" />
-                         </font>
-                      </Button>
-                  <Button fx:id="CloseBtn2" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" graphicTextGap="2.0" maxHeight="26.0" maxWidth="49.0" minWidth="50.0" mnemonicParsing="false" onAction="#onCloseSearchBtn" prefHeight="26.0" prefWidth="50.0" style="-fx-background-color: none;" text="Close" textAlignment="CENTER" textFill="RED" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Button>
-                  <ColorPicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                   </children>
-                   <opaqueInsets>
-                      <Insets />
-                   </opaqueInsets>
-        </GridPane>
         <!--
          End GridPane AddFlight
          -->
@@ -204,6 +148,7 @@
             <Insets />
          </VBox.margin>
       </SplitPane>
+
 
    </children>
 </VBox>

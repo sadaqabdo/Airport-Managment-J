@@ -25,16 +25,16 @@ public class Flight {
     }
 
     public Flight(String source, String destination, String departString, String arrivingString,
-                  String airportID, String airplaneID, int pilotID) throws ParseException {
+                  String terminal, String airplaneID, int pilotID) throws ParseException {
         setFlightID();
-        this.source = source;
-        this.destination = destination;
+        setSource(source);
+        setDestination(destination);
         setDepartDate(departString);
         setArrivingDate(arrivingString);
         this.duration = duration();
-        this.airportID = airportID;
-        this.airplaneID = airplaneID;
-        this.pilotID = pilotID;
+        setTerminal(terminal);
+        setAirplaneID(airplaneID);
+        setPilotID(pilotID);
     }
     public Flight(String flightID, String source, String destination, String departString, String arrivingString,
                        String airportID, String airplaneID, int pilotID) throws ParseException {
@@ -173,13 +173,21 @@ public class Flight {
     public void setArrivingDate(String arrivingString) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         SimpleDateFormat formatter2 = new SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy");
-
+        SimpleDateFormat formatter3 = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        SimpleDateFormat formatter4 = new SimpleDateFormat("dd MMM yyyy, hh:mm:ss");
         arrivingString.strip();
         try {
+            try {
+                this.arrivingDate = formatter4.parse(arrivingString);
+            }
+            catch (ParseException r){
             this.arrivingDate = formatter.parse(arrivingString);
-        }catch (ParseException e){
-            this.arrivingDate = formatter2.parse(arrivingString);
-
+        }}catch (ParseException e){
+            try{
+                this.arrivingDate = formatter3.parse(arrivingString);
+            }catch (ParseException l) {
+                this.arrivingDate = formatter2.parse(arrivingString);
+            }
         }
 
     }
@@ -187,14 +195,26 @@ public class Flight {
     public void setDepartDate(String departString) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         SimpleDateFormat formatter2 = new SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy");
+        SimpleDateFormat formatter3 = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+        SimpleDateFormat formatter4 = new SimpleDateFormat("dd MMM yyyy, hh:mm:ss");
+
         departString.strip();
         try {
-            this.departDate = formatter.parse(departString);
+            try {
+                this.departDate = formatter.parse(departString);
+            }catch (ParseException l ){
+                this.departDate = formatter4.parse(departString);
+            }
         }catch (ParseException e){
-            this.departDate = formatter2.parse(departString);
+            try {
+                this.departDate = formatter2.parse(departString);
+            }catch (ParseException l){
+                this.departDate = formatter3.parse(departString);
+
+            }
         }
 
-    }
+    } 
 
     public String duration() {
         long differenceInTime = this.arrivingDate.getTime() - this.departDate.getTime();
@@ -220,7 +240,7 @@ public class Flight {
 
         StringBuilder sb = new StringBuilder(4);
         for(int i = 0; i < 2; i++) {sb.append(AB.charAt(rnd.nextInt(AB.length())));
-        sb.append(A1.charAt(rnd.nextInt(A1.length())));};
+        sb.append(A1.charAt(rnd.nextInt(A1.length())));}
         this.flightID = sb.toString();
 
     }
