@@ -24,6 +24,7 @@ public class Flight {
     public Flight() {
     }
 
+<<<<<<< HEAD
     public Flight(String source, String destination, String departString, String arrivingString,
                   String terminal, String airplaneID, int pilotID) throws ParseException {
         setFlightID();
@@ -38,6 +39,9 @@ public class Flight {
     }
     public Flight(String flightID, String source, String destination, String departString, String arrivingString,
                        String airportID, String airplaneID, int pilotID) throws ParseException {
+=======
+    public Flight(String flightID, String source, String destination, String departString, String arrivingString,
+                   String airportID, String airplaneID, int pilotID) throws ParseException {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
@@ -52,12 +56,30 @@ public class Flight {
     public Flight(String flightID, String source, String destination, Date departDate, Date arrivingDate,
                   String terminal, String airportID,
                   String airplaneID, int pilotID) {
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
+        this.flightID = flightID;
+        this.source = source;
+        this.destination = destination;
+        setDepartDate(departString);
+        setArrivingDate(arrivingString);
+        this.duration = duration();
+<<<<<<< HEAD
+        this.airportID = airportID;
+        this.airplaneID = airplaneID;
+        this.pilotID = pilotID;
+    }
+
+    public Flight(String flightID, String source, String destination, Date departDate, Date arrivingDate,
+                  String terminal, String airportID,
+                  String airplaneID, int pilotID) {
         this.flightID = flightID;
         this.source = source;
         this.destination = destination;
         this.departDate = departDate;
         this.arrivingDate = arrivingDate;
         this.duration = duration();
+=======
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
         this.terminal = terminal;
         this.airportID = airportID;
         this.airplaneID = airplaneID;
@@ -66,6 +88,10 @@ public class Flight {
 
     /**
      * StringMethod
+<<<<<<< HEAD
+=======
+
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
     static String duration(Date startDate, Date endDate) {
         long differenceInTime = endDate.getTime() - startDate.getTime();
         long differenceInSeconds = (differenceInTime / 1000) % 60;
@@ -144,6 +170,7 @@ public class Flight {
 
     public String getAirportID() {
         return airportID;
+<<<<<<< HEAD
     }
 
     public void setAirportID(String airportID) {
@@ -211,6 +238,39 @@ public class Flight {
         }
 
     } 
+=======
+    }
+
+    public void setAirportID(String airportID) {
+        this.airportID = airportID;
+    }
+
+    public String getAirplaneID() {
+        return airplaneID;
+    }
+
+    public void setAirplaneID(String airplaneID) {
+        this.airplaneID = airplaneID;
+    }
+
+    public int getPilotID() {
+        return pilotID;
+    }
+
+    public void setPilotID(int pilotID) {
+        this.pilotID = pilotID;
+    }
+
+    public void setArrivingDate(String arrivingString) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        this.arrivingDate = formatter.parse(arrivingString);
+    }
+
+    public void setDepartDate(String departString) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        this.departDate = formatter.parse(departString);
+    }
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
 
     public String duration() {
         long differenceInTime = this.arrivingDate.getTime() - this.departDate.getTime();
@@ -228,6 +288,7 @@ public class Flight {
                     + differenceInMinutes + "m" + differenceInSeconds + "s";
         }
         return DurationString;
+<<<<<<< HEAD
     }
     public void setFlightID() {
         final String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -241,3 +302,8 @@ public class Flight {
         }
         this.flightID = sb.toString();
     }}
+=======
+
+    }
+}
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af

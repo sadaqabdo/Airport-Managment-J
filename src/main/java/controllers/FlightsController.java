@@ -1,6 +1,7 @@
 package controllers;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class FlightsController {
 
 }
@@ -16,10 +17,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+=======
+import airportmanagment.DBConnection;
+import  classes.Flight;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+<<<<<<< HEAD
 import javafx.stage.Stage;
 import jfxtras.scene.control.LocalDateTimeTextField;
 
@@ -33,12 +43,20 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+=======
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
 import java.util.ResourceBundle;
 
 
 public class FlightsController implements Initializable {
     @FXML private Menu Flight;
     @FXML private VBox vb;
+<<<<<<< HEAD
     @FXML private GridPane addGrids;
     @FXML private MenuItem ViewFlightMenu,AddFlightMenu,SearchFlightMenu;
     @FXML private MenuItem ViewTicketMenu,AddTicketMenu,SearchTicketMenu;
@@ -46,22 +64,39 @@ public class FlightsController implements Initializable {
     @FXML private DatePicker datepickersearch;
     @FXML private ChoiceBox addsource,adddestination,addterminal,addairplane,add_pilot;
     @FXML private LocalDateTimeTextField adddepartDate,addarrivingDate;
+=======
+    @FXML private GridPane addGrid,searchGrid;
+    @FXML private MenuItem ViewFlightMenu,AddFlightMenu,SearchFlightMenu;
+    @FXML private ChoiceBox addsource,adddestination,addterminal,addairplane,add_Pilot;
+    @FXML private TextField addDepartDate,addArrivingDate;
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
     @FXML private TableView<Flight> FlightTable;
     @FXML private TableColumn<Flight,String> source,destination,departDate,arrivingDate,duration;
     @FXML private TableColumn<Flight,String> pilot,flightID,airport,terminal,airplane;
 
+<<<<<<< HEAD
     private Stage stage;
     private Scene scene;
     public Parent root;
     private ObservableList<Flight> data = FXCollections.observableArrayList();
 
 
+=======
+    private ObservableList<Flight> data;
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+<<<<<<< HEAD
         addGrids.setMinWidth(0);
         addGrids.setMaxWidth(0);
+=======
+        addGrid.setMinWidth(0);
+        addGrid.setMaxWidth(0);
+        searchGrid.setMinWidth(0);
+        searchGrid.setMaxWidth(0);
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
         flightID.setCellValueFactory(new PropertyValueFactory<Flight,String>("flightID"));
         source.setCellValueFactory(new PropertyValueFactory<Flight,String>("source"));
         destination.setCellValueFactory(new PropertyValueFactory<Flight,String>("destination"));
@@ -78,6 +113,7 @@ public class FlightsController implements Initializable {
 
     public void buildDate(){
         int i = 1;
+<<<<<<< HEAD
         try{
             ArrayList<String> sources = new ArrayList<String>();
             ArrayList<String> destinations = new ArrayList<String>();
@@ -96,6 +132,16 @@ public class FlightsController implements Initializable {
             ResultSet r3 = st3.executeQuery("select Distinct pilotid from Flight;");
 
 
+=======
+        data = FXCollections.observableArrayList();
+        try{
+            ArrayList<String> list = new ArrayList<String>();
+            ArrayList<String> list2 = new ArrayList<String>();
+
+            Connection con = DBConnection.getConnection();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * from Flight;");
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
             while(rs.next()){
                 Flight f = new Flight();
                 f.setFlightID(rs.getString(1));
@@ -108,6 +154,7 @@ public class FlightsController implements Initializable {
                 f.setAirplaneID(rs.getString(5));
                 f.setPilotID(Integer.parseInt(rs.getString(6)));
                 f.setAirportID(rs.getString(7));
+<<<<<<< HEAD
                 data.add(f);
             }
             while (r1.next()){
@@ -133,6 +180,19 @@ public class FlightsController implements Initializable {
             addairplane.setItems(airplanesBox);
             add_pilot.setItems(pilotsBox);
             addterminal.setItems(terminalsBox);
+=======
+
+                data.add(f);
+                i++;
+                list.add(rs.getString(2));
+                list2.add(rs.getString(3));
+            }
+            FlightTable.setItems(data);
+            ObservableList sourceBox = FXCollections.observableList(list);
+            ObservableList destinationBox = FXCollections.observableList(list2);
+            addsource.setItems(sourceBox);
+            adddestination.setItems(destinationBox);
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
             con.close();
             st.close();
         }
@@ -141,6 +201,7 @@ public class FlightsController implements Initializable {
             System.out.println("Error on Building Data");
         }
     }
+<<<<<<< HEAD
     public void insertData(Object obj){
         try{
             Connection con = DBConnection.getConnection();
@@ -171,11 +232,31 @@ public class FlightsController implements Initializable {
                 FlightTable.setItems(data);
                 con.close();
                 }
+=======
+    /*
+    public void insertDate(){
+        try{
+            int i=0;
+            Connection con = DBConnection.getConnection();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT source from Flight;");
+            while(rs.next()){
+                Flight f = new Flight();
+
+                f.setApName(rs.getString(1));
+                f.setCity(rs.getString(1));
+                data.add(f);
+                i++;
+            }
+            FlightTable.setItems(data);
+
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
         }
         catch(Exception e){
             e.printStackTrace();
             System.out.println("Error on Inserting Data");
         }}
+<<<<<<< HEAD
 
     private void searchData(Object obj){
         ObservableList<Flight> donnee = FXCollections.observableArrayList();
@@ -225,12 +306,20 @@ public class FlightsController implements Initializable {
     }
     @FXML
     private void SearchFlightMenuClbck(){
+=======
+    */
+    @FXML
+    private void SearchFlightMenuClbck(){
+        searchGrid.setMinWidth(260);
+        searchGrid.setMaxWidth(460);
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
     }
     @FXML
     private void ViewFlightMenuClbck(){
     }
     @FXML
     private void AddFlightMenuClbck(){
+<<<<<<< HEAD
         addGrids.setMinWidth(260);
         addGrids.setMaxWidth(460);
     }
@@ -287,5 +376,24 @@ public class FlightsController implements Initializable {
     }
 
 
+=======
+        addGrid.setMinWidth(260);
+        addGrid.setMaxWidth(460);
+    }
+    @FXML
+    private void onCloseAddBtn(){
+        addGrid.setMinWidth(0);
+        addGrid.setMaxWidth(0);
+    }
+    @FXML
+    private void onCloseSearchBtn(){
+        searchGrid.setMinWidth(0);
+        searchGrid.setMaxWidth(0);
+    }
+    @FXML
+    private void onAddFlight(){
+    }
+
+>>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
 }
 >>>>>>> 9562eb6e3a4e1c076d6460244ca2cc39831b7759
