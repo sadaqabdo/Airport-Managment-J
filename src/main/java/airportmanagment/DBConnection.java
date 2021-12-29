@@ -33,6 +33,7 @@ public class DBConnection {
         }
         return connection;
     }
+    /*
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String username){
 
         try {
@@ -89,6 +90,8 @@ public class DBConnection {
             }
         }
     }
+
+     */
 
 
 }

@@ -1,5 +1,6 @@
 package airportmanagment;
 
+import dashboards.AdminDashboard;
 import dashboards.FlightsDashboard;
 import dashboards.LoginDashboard;
 import classes.*;
@@ -18,7 +19,7 @@ public class Main {
             System.out.println("Connexion success:");
         }
 
-        launch(LoginDashboard.class, args);
+        launch(AdminDashboard.class, args);
     }
     Employee e=new Employee();
 

@@ -2,20 +2,47 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
+<AnchorPane prefHeight="400.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
    <children>
-      <Label fx:id="label_welcome" layoutX="156.0" layoutY="72.0" text="Admin Dashboard">
+      <Button fx:id="button_logout" layoutX="513.0" layoutY="356.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="68.0" text="Logout">
          <font>
-            <Font name="System Bold" size="36.0" />
-         </font>
-      </Label>
-      <Button fx:id="button_logout" layoutX="274.0" layoutY="236.0" mnemonicParsing="false" text="Logout">
-         <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font>
       </Button>
+      <TableView fx:id="employeeTable" layoutX="335.0" onMouseClicked="#tableview" prefHeight="333.0" prefWidth="429.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="92.0" text="id " />
+          <TableColumn fx:id="nameCol" prefWidth="91.0" text="name" />
+            <TableColumn fx:id="salaryCol" prefWidth="96.0" text="salary" />
+            <TableColumn fx:id="passwordCol" prefWidth="112.0" text="password" />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="6.0" layoutY="4.0" prefHeight="400.0" prefWidth="332.0">
+         <children>
+            <Button fx:id="bt_add" layoutX="16.0" layoutY="286.0" mnemonicParsing="false" onMouseClicked="#getAddView" text="add" />
+            <Button fx:id="bt_modify" layoutX="191.0" layoutY="286.0" mnemonicParsing="false" onMouseClicked="#getModifyView" text="modify" />
+            <Button fx:id="bt_delete" layoutX="93.0" layoutY="286.0" mnemonicParsing="false" onMouseClicked="#getDeleteView" text="delete" />
+            <Label layoutX="16.0" layoutY="87.0" text="id" />
+            <TextField fx:id="tf_id" layoutX="42.0" layoutY="83.0" />
+            <Label layoutX="11.0" layoutY="122.0" text="name" />
+            <TextField fx:id="tf_name" layoutX="43.0" layoutY="118.0" />
+            <Label layoutX="9.0" layoutY="192.0" text="password" />
+            <TextField fx:id="tf_password" layoutX="68.0" layoutY="188.0" />
+            <Label layoutX="11.0" layoutY="157.0" text="salary" />
+            <TextField fx:id="tf_salary" layoutX="54.0" layoutY="153.0" />
+            <Label layoutX="128.0" layoutY="29.0" text="Admin">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Button fx:id="bt_refresh" layoutX="116.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#refreshTable" text="refresh" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
