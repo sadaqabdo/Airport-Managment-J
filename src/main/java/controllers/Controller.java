@@ -18,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -97,10 +98,19 @@ public class Controller implements Initializable {
     private Button button_tickets;
     @FXML
     private Button button_employee;
+    @FXML
+    private Button bt_exit;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadDate();
+
+        bt_exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+            }
+        });
 
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
