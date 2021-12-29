@@ -1,13 +1,9 @@
 package controllers;
 import airportmanagment.DBConnection;
-<<<<<<< HEAD
-//import airportmanagment.DBUtils;
-=======
 import airportmanagment.DBMethodes;
 import classes.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
->>>>>>> 9562eb6e3a4e1c076d6460244ca2cc39831b7759
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

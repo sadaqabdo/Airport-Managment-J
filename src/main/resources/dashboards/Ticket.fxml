@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -19,7 +15,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TicketController">
     <children>
-        <fx:include source="flightmenu.fxml" />
+        <fx:include source="TicketMenu.fxml" />
         <SplitPane dividerPositions="0.3" prefHeight="375.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
             <items>
                 <GridPane alignment="CENTER">
