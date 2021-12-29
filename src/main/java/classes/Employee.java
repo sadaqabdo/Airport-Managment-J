@@ -23,6 +23,11 @@ public class Employee extends Person {
         super(id, name);
     }
 
+    public Employee(String name, int age, String gender, String nationality, String job) {
+        super(name,age,gender,nationality);
+        this.job = job;
+    }
+
     public String getJob() {
         return job;
     }

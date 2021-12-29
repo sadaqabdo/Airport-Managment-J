@@ -26,11 +26,11 @@ public class DBConnection {
     ResultSet rst;
 
     public static Connection getConnection() {
-        // "jdbc:oracle:thin:@localhost:1521:XE"
-        // jdbc:mysql://localhost:3306/airport_management_db
+        String s = "jdbc:oracle:thin:@localhost:1521:XE";
+        //jdbc:mysql://localhost:3306/airport_management_db
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
-            //connection = DriverManager.getConnection("jdbc:oracle:thin:@" + HOST + ":" + PORT + ":XE", USERNAME, PASSWORD);
+            //connection = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
+            connection = DriverManager.getConnection("jdbc:oracle:thin:@" + HOST + ":" + PORT + ":XE", USERNAME, PASSWORD);
         } catch (SQLException se) {
             System.out.println("Connexion failed:" + se);
         }
