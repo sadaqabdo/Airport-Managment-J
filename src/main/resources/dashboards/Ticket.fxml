@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -16,14 +15,16 @@
 
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TicketController">
     <children>
-        <fx:include source="TicketMenu.fxml" />
-        <SplitPane dividerPositions="0.3, 0.5" VBox.vgrow="ALWAYS" prefHeight="375.0" prefWidth="640.0">
+        <fx:include source="flightmenu.fxml" />
+        <SplitPane dividerPositions="0.3" prefHeight="375.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
             <items>
                 <GridPane alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="150.0" prefWidth="140.0" />
                     </columnConstraints>
                     <rowConstraints>
+                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="54.0" minHeight="40.0" prefHeight="54.0" valignment="CENTER" vgrow="SOMETIMES" />
@@ -31,15 +32,17 @@
                         <RowConstraints maxHeight="40.0" minHeight="11.0" prefHeight="13.0" valignment="CENTER" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button fx:id="Addbtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="10.0" layoutY="225.0" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="21.0" prefWidth="100.0" text="Add Ticket" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                        <TextField fx:id="TicketField" prefHeight="30.0" prefWidth="145.0" promptText="Ticket">
+                        <Button fx:id="Addbtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="10.0" layoutY="225.0" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="21.0" prefWidth="100.0" text="Add Ticket" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                        <TextField fx:id="TicketField" prefHeight="30.0" prefWidth="145.0" promptText="Ticket" GridPane.rowIndex="2">
                             <cursor>
                                 <Cursor fx:constant="TEXT" />
                             </cursor>
                         </TextField>
-                        <TextField fx:id="PassengerField" prefHeight="30.0" prefWidth="145.0" promptText="Passenger" GridPane.rowIndex="1" />
-                        <TextField fx:id="FlightField" prefHeight="30.0" prefWidth="145.0" promptText="Flight" GridPane.rowIndex="2" />
-                        <Button fx:id="DeleteBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="24.0" maxWidth="147.0" mnemonicParsing="false" onAction="#OnDeleteButton" prefHeight="24.0" prefWidth="147.0" text="Delete selected Ticket" textAlignment="CENTER" GridPane.rowIndex="4" />
+                        <TextField fx:id="PassengerField" prefHeight="30.0" prefWidth="145.0" promptText="Passenger" GridPane.rowIndex="3" />
+                        <TextField fx:id="FlightField" prefHeight="30.0" prefWidth="145.0" promptText="Flight" GridPane.rowIndex="4" />
+                        <Button fx:id="DeleteBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="24.0" maxWidth="147.0" mnemonicParsing="false" onAction="#OnDeleteButton" prefHeight="24.0" prefWidth="147.0" text="Delete selected Ticket" textAlignment="CENTER" GridPane.rowIndex="6" />
+                  <TextField fx:id="searchField" GridPane.rowIndex="1" />
+                  <Button fx:id="searchbtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" onAction="#OnsearchButton" prefHeight="24.0" prefWidth="64.0" text="search" textAlignment="CENTER" />
                     </children>
                     <opaqueInsets>
                         <Insets />
@@ -48,7 +51,7 @@
                         <Insets bottom="10.0" top="10.0" />
                     </padding>
                 </GridPane>
-                <ScrollPane  fitToHeight="true" fitToWidth="true" prefHeight="371.0" prefWidth="555.0" SplitPane.resizableWithParent="false">
+                <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="371.0" prefWidth="555.0" SplitPane.resizableWithParent="false">
                     <content>
                         <TableView fx:id="View">
                             <columns>

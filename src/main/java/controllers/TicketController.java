@@ -15,6 +15,14 @@ import java.text.ParseException;
 import java.util.ResourceBundle;
 
 public class TicketController implements Initializable {
+    @FXML
+    public Menu TicketMenu;
+    @FXML
+    public MenuItem AddMenu;
+    @FXML
+    public MenuItem SearchMenu;
+    public TextField searchField;
+    public Button searchbtn;
     // bring elements from FXML
     @FXML
     private TextField TicketField, PassengerField, FlightField;
@@ -78,9 +86,11 @@ public class TicketController implements Initializable {
 
     @FXML
     public void OnDeleteButton() {
+        Ticket ticKet = new Ticket(TicketField.getText(), PassengerField.getText(), FlightField.getText());
         int row = View.getSelectionModel().getSelectedIndex();
         try {
             delete(row);
+            deleteData(ticKet);
         } catch (Exception IndexOutOfBoundsException) {
             System.out.println("unselected row to delete");
         }
@@ -88,7 +98,7 @@ public class TicketController implements Initializable {
 
     public void AddtoTable(Ticket ticket) {
         data = View.getItems();
-        data.add(ticket);
+        data.add(0,ticket);
         View.setItems(data);
     }
 
@@ -158,8 +168,69 @@ public class TicketController implements Initializable {
         }
     }
     public void deleteData(Object obj){
+        try {
+            Connection con = DBConnection.getConnection();
+            Statement st = con.createStatement();
+            if (obj instanceof Ticket) {
+                String sql="DELETE FROM tickets WHERE idticket = ?;";
+                int resultSet = 0;
+                System.out.println(((Ticket) obj).getTicketID());
+                System.out.println(((Ticket) obj).getPassenger());
+                System.out.println(((Ticket) obj).getFlight());
+                preparedStatement = con.prepareStatement(sql);
+                preparedStatement.setString(1, ((Ticket) obj).getTicketID());
+                resultSet=preparedStatement.executeUpdate();
+                System.out.println("Row deleted from database!");
+                System.out.println(((Ticket) obj).getTicketID());
+                con.close();
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void searchForticket(String passenger){
+        try {
+            Connection con = DBConnection.getConnection();
+            Statement st = con.createStatement();
+            String sql = "select * from tickets where passenger = ?";
+            ResultSet resultSet;
+            preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1,passenger);
+            resultSet = preparedStatement.executeQuery();
+            System.out.println("Row found from database!");
+
+            while(resultSet.next()){
+                Ticket selectedTicket = new Ticket(resultSet.getString(1),resultSet.getString(2),
+                        resultSet.getString(3));
+                System.out.println(selectedTicket);
+                for (int i = 0; i < View.getItems().size(); i++) {
+                    if (View.getItems().get(i).getTicketID().equals(resultSet.getString(1)) ) {
+                        System.out.println("Selected Index : "+i);
+                    }
+                }
+                System.out.println(resultSet.getString(1));
+                System.out.println(resultSet.getString(1).getClass().getName());
+            }
+                // know index of the searched
+            con.close();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void OnsearchButton() {
+        /*
+        if (searchField.getText().isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("search field empty");
+            // show the dialog error
+            a.show();
+        }*/
+        searchForticket(searchField.getText());
 
     }
 
-}
+
+    }
 
