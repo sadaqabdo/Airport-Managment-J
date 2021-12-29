@@ -4,84 +4,28 @@ package controllers;
 import airportmanagment.DBConnection;
 import airportmanagment.DBMethodes;
 import classes.Employee;
-import dashboards.Dash;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    @FXML
-    private VBox pnItems = null;
-    @FXML
-    private Button btnOverview;
 
-    @FXML
-    private Button btnOrders;
-
-    @FXML
-    private Button btnCustomers;
-
-    @FXML
-    private Button btnMenus;
-
-    @FXML
-    private Button btnPackages;
-
-    @FXML
-    private Button btnSettings;
-
-
-    @FXML
-    private Pane pnlCustomer;
-
-    @FXML
-    private Pane pnlOrders;
 
     @FXML
     private Pane pnlOverview;
-
-    @FXML
-    private Pane pnlMenus;
-
-
-
-    public void handleClicks(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == btnCustomers) {
-            pnlCustomer.setStyle("-fx-background-color : #1620A1");
-            pnlCustomer.toFront();
-        }
-        if (actionEvent.getSource() == btnMenus) {
-            pnlMenus.setStyle("-fx-background-color : #53639F");
-            pnlMenus.toFront();
-        }
-        if (actionEvent.getSource() == btnOverview) {
-            pnlOverview.setStyle("-fx-background-color : #02030A");
-            pnlOverview.toFront();
-        }
-        if(actionEvent.getSource()==btnOrders)
-        {
-            pnlOrders.setStyle("-fx-background-color : #464F67");
-            pnlOrders.toFront();
-        }
-    }
-
     @FXML
     private Button button_logout;
     @FXML
@@ -288,9 +232,6 @@ public class Controller implements Initializable {
 
     }
 
-
-
-
     void setTextField(String id, String name, String salary, String password) {
 
         tf_id.setText(id);
@@ -301,8 +242,13 @@ public class Controller implements Initializable {
     }
 
     public void tableview(MouseEvent mouseEvent) {
-        employee = employeeTable.getSelectionModel().getSelectedItem();
-        setTextField(String.valueOf(employee.getId()),employee.getName(),String.valueOf(employee.getSalary()), employee.getPassword());
+        try {
+            employee = employeeTable.getSelectionModel().getSelectedItem();
+            setTextField(String.valueOf(employee.getId()),employee.getName(),String.valueOf(employee.getSalary()), employee.getPassword());
+        }catch (Exception e){
+            e.getMessage();
+        }
+
 
     }
 }
