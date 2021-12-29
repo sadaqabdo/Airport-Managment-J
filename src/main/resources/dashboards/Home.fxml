@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="746.0" prefWidth="1203.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1189.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="-2.0" prefHeight="576.0" prefWidth="258.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -90,12 +90,12 @@
             </Button>
          </children>
       </VBox>
-      <StackPane layoutX="258.0" prefHeight="668.0" prefWidth="826.0" style="-fx-background-color: #02030A;">
+      <StackPane layoutX="256.0" layoutY="-1.0" prefHeight="716.0" prefWidth="931.0" style="-fx-background-color: #02030A;">
          <children>
             <Pane fx:id="pnlCustomer" prefHeight="636.0" prefWidth="849.0" />
             <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="pnlOverview">
+            <Pane fx:id="pnlOverview" prefHeight="694.0" prefWidth="928.0">
                <children>
                   <TextField layoutX="549.0" layoutY="29.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
                   <Label layoutX="57.0" layoutY="25.0" text="Airport Management" textFill="#e7e5e5">
@@ -108,35 +108,35 @@
                         <Image url="@../images/icons8_Search_52px.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="bt_add" layoutX="104.0" layoutY="458.0" mnemonicParsing="false" style="-fx-background-color: #2a73ff;" text="add" textFill="WHITE">
+                  <Button fx:id="bt_add" layoutX="131.0" layoutY="614.0" mnemonicParsing="false" style="-fx-background-color: #2a73ff;" text="add" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bt_modify" layoutX="250.0" layoutY="457.0" mnemonicParsing="false" style="-fx-background-color: #26bfbc;" text="modify" textFill="WHITE">
+                  <Button fx:id="bt_modify" layoutX="267.0" layoutY="614.0" mnemonicParsing="false" style="-fx-background-color: #26bfbc;" text="modify" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bt_delete" layoutX="418.0" layoutY="457.0" mnemonicParsing="false" style="-fx-background-color: #fa5f7e;" text="delete" textFill="WHITE">
+                  <Button fx:id="bt_delete" layoutX="475.0" layoutY="614.0" mnemonicParsing="false" style="-fx-background-color: #fa5f7e;" text="delete" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bt_refresh" layoutX="595.0" layoutY="457.0" mnemonicParsing="false" style="-fx-background-color: #de0000;" text="refresh" textFill="WHITE">
+                  <Button fx:id="bt_refresh" layoutX="663.0" layoutY="606.0" mnemonicParsing="false" style="-fx-background-color: #de0000;" text="refresh" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <TableView fx:id="employeeTable" layoutX="250.0" layoutY="101.0" onMouseClicked="#tableview" prefHeight="299.0" prefWidth="534.0" style="-fx-background-color: #05071F;">
+                  <TableView fx:id="employeeTable" layoutX="357.0" layoutY="117.0" onMouseClicked="#tableview" prefHeight="388.0" prefWidth="561.0" style="-fx-background-color: #05071F; -fx-border-color: #05071F;">
                      <columns>
-                        <TableColumn fx:id="idCol" prefWidth="117.0" style="-fx-background-color: gray;" text="id " />
-                        <TableColumn fx:id="nameCol" prefWidth="118.0" style="-fx-background-color: gray;" text="name" />
-                        <TableColumn fx:id="salaryCol" prefWidth="139.0" style="-fx-background-color: gray;" text="salary" />
-                        <TableColumn fx:id="passwordCol" prefWidth="159.0" style="-fx-background-color: gray;" text="password" />
+                        <TableColumn fx:id="idCol" prefWidth="117.0" style="-fx-background-color: #05071F;" text="id " />
+                        <TableColumn fx:id="nameCol" prefWidth="118.0" style="-fx-background-color: #05071F;" text="name" />
+                        <TableColumn fx:id="salaryCol" prefWidth="166.0" style="-fx-background-color: #05071F;" text="salary" />
+                        <TableColumn fx:id="passwordCol" prefWidth="159.0" style="-fx-background-color: #05071F;" text="password" />
                      </columns>
                   </TableView>
-                  <GridPane layoutX="-7.0" layoutY="128.0" prefHeight="138.0" prefWidth="264.0">
+                  <GridPane layoutX="36.0" layoutY="235.0" prefHeight="138.0" prefWidth="264.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -148,13 +148,13 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label text="id" />
+                        <Label text="id" textFill="WHITE" />
                         <TextField fx:id="tf_id" GridPane.columnIndex="1" />
-                        <Label text="name" GridPane.rowIndex="1" />
+                        <Label text="name" textFill="WHITE" GridPane.rowIndex="1" />
                         <TextField fx:id="tf_name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="salary" GridPane.rowIndex="2" />
+                        <Label text="salary" textFill="WHITE" GridPane.rowIndex="2" />
                         <TextField fx:id="tf_salary" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="password" GridPane.rowIndex="3" />
+                        <Label text="password" textFill="WHITE" GridPane.rowIndex="3" />
                         <TextField fx:id="tf_password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
