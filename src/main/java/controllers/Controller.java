@@ -1,22 +1,85 @@
 package controllers;
+
+
 import airportmanagment.DBConnection;
 import airportmanagment.DBMethodes;
 import classes.Employee;
+import dashboards.Dash;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+public class Controller implements Initializable {
 
-public class AdminController implements Initializable {
+    @FXML
+    private VBox pnItems = null;
+    @FXML
+    private Button btnOverview;
+
+    @FXML
+    private Button btnOrders;
+
+    @FXML
+    private Button btnCustomers;
+
+    @FXML
+    private Button btnMenus;
+
+    @FXML
+    private Button btnPackages;
+
+    @FXML
+    private Button btnSettings;
+
+
+    @FXML
+    private Pane pnlCustomer;
+
+    @FXML
+    private Pane pnlOrders;
+
+    @FXML
+    private Pane pnlOverview;
+
+    @FXML
+    private Pane pnlMenus;
+
+
+
+    public void handleClicks(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == btnCustomers) {
+            pnlCustomer.setStyle("-fx-background-color : #1620A1");
+            pnlCustomer.toFront();
+        }
+        if (actionEvent.getSource() == btnMenus) {
+            pnlMenus.setStyle("-fx-background-color : #53639F");
+            pnlMenus.toFront();
+        }
+        if (actionEvent.getSource() == btnOverview) {
+            pnlOverview.setStyle("-fx-background-color : #02030A");
+            pnlOverview.toFront();
+        }
+        if(actionEvent.getSource()==btnOrders)
+        {
+            pnlOrders.setStyle("-fx-background-color : #464F67");
+            pnlOrders.toFront();
+        }
+    }
 
     @FXML
     private Button button_logout;
@@ -28,7 +91,7 @@ public class AdminController implements Initializable {
     private Button bt_modify;
     @FXML
     private Button bt_refresh;
-    
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -89,8 +152,6 @@ public class AdminController implements Initializable {
     Employee employee = null ;
     ObservableList<Employee> EmployeeList = FXCollections.observableArrayList();
     Connection connection = DBConnection.getConnection();
-
-
     @FXML
     private TableView<Employee> employeeTable;
     @FXML
@@ -126,15 +187,15 @@ public class AdminController implements Initializable {
             ex.printStackTrace();
         }
     }
-        private void loadDate() {
-            refreshTable();
+    private void loadDate() {
+        refreshTable();
 
-            idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-            nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-            salaryCol.setCellValueFactory(new PropertyValueFactory<>("salary"));
-            passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        salaryCol.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
 
-        }
+    }
     @FXML
     private TextField tf_id;
     @FXML
