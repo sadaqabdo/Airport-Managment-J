@@ -91,7 +91,12 @@ public class Controller implements Initializable {
     private Button bt_modify;
     @FXML
     private Button bt_refresh;
-
+    @FXML
+    private Button button_flights;
+    @FXML
+    private Button button_tickets;
+    @FXML
+    private Button button_employee;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -101,6 +106,24 @@ public class Controller implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 DBMethodes.changeScene(event, "login.fxml", "login",null );
+            }
+        });
+        button_flights.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeFlight(event, "flights.fxml", "flights",null );
+            }
+        });
+        button_tickets.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeTicket(event, "Ticket.fxml", "ticket",null );
+            }
+        });
+        button_employee.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeEmployee(event, "employees.fxml", "employee",null );
             }
         });
     }
