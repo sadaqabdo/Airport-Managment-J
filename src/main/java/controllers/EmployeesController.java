@@ -1,218 +1,265 @@
 package controllers;
 
+
 import airportmanagment.DBConnection;
+import airportmanagment.DBMethodes;
 import classes.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.text.ParseException;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class EmployeesController implements Initializable {
-    @FXML private GridPane addGrid,searchGrid;
-    @FXML private TableView<Employee> EmpTable;
-    @FXML private TableColumn<Employee, String> nameclmn;
-    @FXML private TableColumn<Employee, Integer> ageclmn;
-    @FXML private TableColumn<Employee, String> genderclmn;
-    @FXML private TableColumn<Employee, String> nationalityclmn;
-    @FXML private TableColumn<Employee, String> jobclmn;
 
-    @FXML private TextField empage;
-    @FXML private TextField empgender;
-    @FXML private TextField empjob;
-    @FXML private TextField empname;
-    @FXML private TextField empnationality;
+    @FXML
+    private TextField search_barre;
 
-    private ObservableList<Employee> data = FXCollections.observableArrayList();
+    @FXML
+    private TextField tf_age;
+
+    @FXML
+    private TextField tf_gender;
+
+    @FXML
+    private TextField tf_job;
+
+    @FXML
+    private TextField tf_name;
+
+    @FXML
+    private TextField tf_nationality;
+    @FXML
+    private Pane pnlOverview;
+    @FXML
+    private Button button_logout;
+    @FXML
+    private Button button_flights;
+    @FXML
+    private Button button_tickets;
+    @FXML
+    private Button button_employee;
+    @FXML
+    private Button bt_exit;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle){
-        nameclmn.setCellValueFactory(new PropertyValueFactory<Employee,String>("name"));
-        ageclmn.setCellValueFactory(new PropertyValueFactory<Employee,Integer>("age"));
-        genderclmn.setCellValueFactory(new PropertyValueFactory<Employee,String>("gender"));
-        nationalityclmn.setCellValueFactory(new PropertyValueFactory<Employee,String>("nationality"));
-        jobclmn.setCellValueFactory(new PropertyValueFactory<Employee,String>("job"));
-        EmpTable.setItems(data);
-        //EmpTable.getColumns().addAll(nameclmn, ageclmn,genderclmn,nationalityclmn,jobclmn);
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadDate();
 
-    }
-
-    @FXML
-    private void SearchEmpMenuClbck(){
-        searchGrid.setMinWidth(350);
-        searchGrid.setMaxWidth(350);
-    }
-    @FXML
-    private void ViewEmpMenuClbck(){
-    }
-    @FXML
-    private void AddEmpMenuClbck(){
-        addGrid.setMinWidth(350);
-        addGrid.setMaxWidth(350);
-    }
-
-    @FXML
-    private void onCloseAddBtn(){
-        addGrid.setMinWidth(0);
-        addGrid.setMaxWidth(0);
-    }
-    @FXML
-    private void onCloseSearchBtn(){
-        searchGrid.setMinWidth(0);
-        searchGrid.setMaxWidth(0);
-    }
-
-    @FXML
-    public void onAddEmp() {
-        String ename = empname.getText();
-        Integer eage = Integer.parseInt(empage.getText());
-        String egender =empgender.getText();
-        String enationality = empnationality.getText();
-        String ejob = empjob.getText();
-        Employee emp = new Employee(ename, eage, egender, enationality, ejob);
-        AddtoTable(emp);
-        clearFields();
-        insertToDb(emp);
-    }
-
-    private void insertToDb(Object e) {
-        try{
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            PreparedStatement preparedStatement=null;
-
-            if ((Employee)e instanceof Employee){
-                String sql = "INSERT INTO employees VALUES('"+empname+"',"+empage+",'"+empnationality+"','"+empgender+"','"+empjob+"') ";
-                int resultSet = 0;
-                System.out.println(((Employee) e).getName());
-                System.out.println(((Employee) e).getAge());
-                System.out.println(((Employee) e).getNationality());
-                System.out.println(((Employee) e).getGender());
-                System.out.println(((Employee) e).getJob());
-                /*preparedStatement = con.prepareStatement(sql);
-                preparedStatement.setString(1, ((Employee) e).getName());
-                preparedStatement.setInt(2,  ((Employee) e).getAge());
-                preparedStatement.setString(3, ((Employee) e).getGender());
-                preparedStatement.setString(4, ((Employee) e).getNationality());
-                preparedStatement.setString(5, ((Employee) e).getJob());*/
-
-                preparedStatement.execute(sql);
-                resultSet=preparedStatement.executeUpdate();
-                System.out.println("A new record was inserted successfully!");
-                con.close();
-
+        bt_exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
             }
-        }
-        catch(Exception ee){
-            ee.printStackTrace();
-            System.out.println("Error on Inserting Data");
-        }
+        });
+
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeScene(event, "login.fxml", "login",null );
+            }
+        });
+        button_flights.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeFlight(event, "flights.fxml", "flights",null );
+            }
+        });
+        button_tickets.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeTicket(event, "Ticket.fxml", "ticket",null );
+            }
+        });
+        button_employee.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeEmployee(event, "employee.fxml", "employee",null );
+            }
+        });
     }
 
-    public void AddtoTable(Employee emp){
-        data.add(emp);
-        EmpTable.setItems(data);
-        //EmpTable.getItems().add(emp);
 
-    }
-    private void clearFields() {
-        empname.clear();
-        empage.clear();
-        empgender.clear();
-        empnationality.clear();
-        empjob.clear();
+    @FXML
+    public void getModifyView(MouseEvent mouseEvent) {
+
+        try {
+
+            employee = employeeTable.getSelectionModel().getSelectedItem();
+            query = "UPDATE employees SET "
+                    + "name=?,"
+                    + "age=?,"
+                    + "nationality=?,"
+                    + "job=?,"
+                    + "gender= ? WHERE name = '" + employee.getName() + "'";
+
+            preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setString(1, tf_name.getText());
+            preparedStatement.setString(2,  tf_age.getText());
+            preparedStatement.setString(3, tf_nationality.getText());
+            preparedStatement.setString(4, tf_job.getText());
+            preparedStatement.setString(5, tf_gender.getText());
+            preparedStatement.execute();
+            refreshTable();
+            clean();
+        }catch (SQLException se){
+            se.printStackTrace();
+        }
     }
 
     @FXML
-    void onDeleteEmp(ActionEvent event) {
-        int selected = EmpTable.getSelectionModel().getSelectedIndex();
-        EmpTable.getItems().remove(selected);
+    public void getDeleteView(MouseEvent mouseEvent) {
+        try{
+            employee = employeeTable.getSelectionModel().getSelectedItem();
+            query = "DELETE FROM employees WHERE name = '"+employee.getName()+"'";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.execute();
+            refreshTable();
+            clean();
+        }catch (SQLException se){
+            se.printStackTrace();
+        }
     }
 
-    //////////////////////
-    private void searchData(Object e){
-        ObservableList<Employee> donnee = FXCollections.observableArrayList();
+    String query = null;
+    //Connection connection = null ;
+    PreparedStatement preparedStatement = null ;
+    ResultSet resultSet = null ;
+    Employee employee = null ;
+    ObservableList<Employee> EmployeeList = FXCollections.observableArrayList();
+    Connection connection = DBConnection.getConnection();
+    @FXML
+    private TableView<Employee> employeeTable;
+    @FXML
+    private TableColumn<Employee, String> genderCol;
 
-        try{
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            PreparedStatement preparedStatement=null;
+    @FXML
+    private TableColumn<Employee, String> jobCol;
 
-            if ((Employee)e instanceof Employee){
-                String sql = "Select source from Flight where source = ?;";
-                //"and destination like lower(?) and departdate > ? and arrivingdate < ? and terminal like ? and airplaneid like ? and pilotid like ?;";
+    @FXML
+    private TableColumn<Employee, String> nameCol;
 
-                ResultSet resultSet;
-                preparedStatement = con.prepareStatement(sql);
-                preparedStatement.setString(1,  "'"+ ((Employee) e).getJob()+  "'");
-                System.out.println(preparedStatement.getMetaData());
+    @FXML
+    private TableColumn<Employee, String> nationalityCol;
+    @FXML
+    private TableColumn<Employee, Integer> ageCol;
 
-                /*preparedStatement.setString(2, ((Flight) obj).getDestination());
-                preparedStatement.setString(3, ((Flight) obj).getDepartDate().toString());
-                preparedStatement.setString(4, ((Flight) obj).getArrivingDate().toString());
-                preparedStatement.setString(5, ((Flight) obj).getTerminal());
-                preparedStatement.setInt(6, ((Flight) obj).getPilotID());
-                preparedStatement.setString(7, ((Flight) obj).getAirplaneID());*/
-                preparedStatement = con.prepareStatement(sql);
+    @FXML
+    private void refreshTable() {
+        try {
+            EmployeeList.clear();
 
-                resultSet = preparedStatement.executeQuery();
-                System.out.println("A new record was inserted successfully!");
+            query = "SELECT * FROM employees";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
 
-                while(resultSet.next()){
-                    System.out.println(resultSet.getString(1));
-                }
-                con.close();
+            while (resultSet.next()){
+                EmployeeList.add(new Employee(
+                        resultSet.getString("name"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("gender"),
+                        resultSet.getString("nationality"),
+                        resultSet.getString("job")));
+
+                employeeTable.setItems(EmployeeList);
+
             }
 
 
-
-
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-        catch(Exception ee){
-            ee.printStackTrace();
-            System.out.println("Error on Searching Data");
-        }
+    }
+    private void loadDate() {
+        refreshTable();
+
+        ageCol.setCellValueFactory(new PropertyValueFactory<>("age"));
+        jobCol.setCellValueFactory(new PropertyValueFactory<>("job"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
+        nationalityCol.setCellValueFactory(new PropertyValueFactory<>("nationality"));
 
     }
-    //////////////////////
     @FXML
-    private void onsearchflight(ActionEvent event) throws ParseException {
-        String ename = empname.getText();
-        Integer eage = Integer.parseInt(empage.getText());
-        String egender =empgender.getText();
-        String enationality = empnationality.getText();
-        String ejob = empjob.getText();
-        Employee e = new Employee(ename, eage, egender, enationality, ejob);
+    private void getAddView(MouseEvent event) {
 
-        searchData(e);
+        connection = DBConnection.getConnection();
+        String name = tf_name.getText();
+        String age = tf_age.getText();
+        String gender = tf_gender.getText();
+        String job = tf_job.getText();
+        String nationality = tf_nationality.getText();
+
+        if (name.isEmpty() || name.isEmpty() || age.isEmpty() || age.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Please Fill All DATA");
+            alert.showAndWait();
+        } else {
+
+            try {
+                query = "INSERT INTO employees (name, age, gender, nationality, job) VALUES (?,?,?,?,?)";
+                preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, tf_name.getText());
+                preparedStatement.setString(2, tf_age.getText());
+                preparedStatement.setString(4, tf_nationality.getText());
+                preparedStatement.setString(5, tf_job.getText());
+                preparedStatement.setString(3, tf_gender.getText());
+                preparedStatement.execute();
+            }catch(SQLIntegrityConstraintViolationException e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Duplicate id");
+                alert.showAndWait();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            clean();
+            refreshTable();
+        }
+
     }
-    //////////////////////
+
+    @FXML
+    private void clean() {
+        tf_name.setText(null);
+        tf_job.setText(null);
+        tf_age.setText(null);
+        tf_nationality.setText(null);
+        tf_gender.setText(null);
+    }
+
+    void setTextField(String name, String age, String gender, String nationality, String job) {
+
+        tf_name.setText(name);
+        tf_job.setText(job);
+        tf_age.setText(age);
+        tf_nationality.setText(nationality);
+        tf_gender.setText(gender);
+
+    }
+
+    public void tableview(MouseEvent mouseEvent) {
+        try {
+            Employee e = employeeTable.getSelectionModel().getSelectedItem();
+            setTextField(e.getName(),String.valueOf(e.getAge()),e.getGender(),e.getNationality(), e.getJob());
+        }catch (Exception ee){
+            ee.getMessage();
+        }
 
 
-
-
-    public void backToMain(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/dashboards/Main.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 }
