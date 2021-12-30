@@ -1,6 +1,7 @@
 package controllers;
 
 import airportmanagment.DBConnection;
+import classes.Employee;
 import classes.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -79,6 +80,28 @@ public class TicketController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+    @FXML
+    private void refreshTable() {
+
+        try {
+            searcheddata.clear();
+            Connection connection = DBConnection.getConnection();
+            ResultSet resultSet = null ;
+            String query = "SELECT * FROM `tickets`";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                searcheddata.add(new Ticket(
+                        resultSet.getString("idticket"),
+                        resultSet.getString("passenger"),
+                        resultSet.getString("flight")));
+                Tck.setItems(searcheddata);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML
