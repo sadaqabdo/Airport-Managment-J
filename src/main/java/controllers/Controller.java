@@ -31,7 +31,6 @@ public class Controller implements Initializable {
     @FXML
     private Button bt_refresh, button_flights, button_tickets, button_employee;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadDate();
@@ -158,6 +157,7 @@ public class Controller implements Initializable {
     }
     @FXML
     private TextField tf_id, tf_name, tf_salary, tf_password;
+
 
     @FXML
     private void getAddView(MouseEvent event) {
