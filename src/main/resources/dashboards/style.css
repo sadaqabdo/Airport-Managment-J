@@ -2,7 +2,6 @@
 button_tickets:hover{
 -fx-background-color : #10165F;
 }
-/*
 
 
 .button{
@@ -42,4 +41,4 @@ button_tickets:hover{
 
 .scroll-pane > .corner {
     -fx-background-color: black;
-*/
+}

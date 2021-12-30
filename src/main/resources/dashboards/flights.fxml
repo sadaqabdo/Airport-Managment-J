@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
-<?import jfxtras.scene.control.LocalDateTimeTextField?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import jfxtras.scene.control.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1189.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlightsController">
    <children>
@@ -117,9 +104,9 @@
       </VBox>
       <StackPane layoutX="256.0" layoutY="-1.0" prefHeight="716.0" prefWidth="931.0" style="-fx-background-color: #02030A;">
          <children>
-            <Pane fx:id="pnlOverview" prefHeight="716.0" prefWidth="1009.0">
+            <Pane fx:id="flightpnlOverview" prefHeight="716.0" prefWidth="1009.0">
                <children>
-                  <TextField layoutX="549.0" layoutY="29.0" onInputMethodTextChanged="#onsearchflight" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <TextField fx:id="searchfield" layoutX="549.0" layoutY="29.0" onAction="#onsearchflight" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
                   <Label layoutX="57.0" layoutY="25.0" text="Airport Management" textFill="#e7e5e5">
                      <font>
                         <Font size="24.0" />
@@ -135,7 +122,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TableView fx:id="FlightTable" layoutX="299.0" layoutY="116.0" prefHeight="435.0" prefWidth="628.0" style="-fx-background-color: white; -fx-background-radius: 0 0 20 20;">
+                  <TableView fx:id="FlightTable" layoutX="299.0" layoutY="116.0" onMouseClicked="#tableview" prefHeight="435.0" prefWidth="628.0" style="-fx-background-color: white; -fx-background-radius: 0 0 20 20;">
                      <columns>
                         <TableColumn fx:id="flightID" prefWidth="55.0" text="FlightID" />
                         <TableColumn fx:id="source" prefWidth="71.0" text="Source" />
@@ -231,7 +218,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="Addbtn" mnemonicParsing="false" onAction="#onAddFlight" onMouseClicked="#getAddView" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #2a73ff;" text="Add" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="Addbtn" mnemonicParsing="false" onAction="#onAddFlight" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #2a73ff;" text="Add" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

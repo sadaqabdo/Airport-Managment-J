@@ -45,7 +45,7 @@ public class TicketController implements Initializable {
     private Button bt_exit;
     // initialize data in tableview each row is a ticket object
     private ObservableList<Ticket> data = FXCollections.observableArrayList();
-    private ObservableList<Ticket> searcheddata = FXCollections.observableArrayList();
+    private final ObservableList<Ticket> searcheddata = FXCollections.observableArrayList();
 
 
     @Override

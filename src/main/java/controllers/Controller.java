@@ -73,14 +73,13 @@ public class Controller implements Initializable {
     public void getModifyView(MouseEvent mouseEvent) {
 
         try {
-
             employee = employeeTable.getSelectionModel().getSelectedItem();
             query = "UPDATE employees SET "
                     + "`id`=?,"
                     + "`name`=?,"
                     + "`salary`=?,"
                     + "`password`= ? WHERE id = '" + employee.getId() + "'";
-
+          
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, tf_id.getText());
             preparedStatement.setString(2, tf_name.getText());
@@ -115,6 +114,7 @@ public class Controller implements Initializable {
     Employee employee = null ;
     ObservableList<Employee> EmployeeList = FXCollections.observableArrayList();
     Connection connection = DBConnection.getConnection();
+  
     @FXML
     private TableView<Employee> employeeTable;
     @FXML
@@ -126,7 +126,6 @@ public class Controller implements Initializable {
     private void refreshTable() {
         try {
             EmployeeList.clear();
-
             query = "SELECT * FROM employees";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
@@ -215,9 +214,8 @@ public class Controller implements Initializable {
         tf_name.setText(name);
         tf_salary.setText(salary);
         tf_password.setText(password);
-
     }
-
+    @FXML
     public void tableview(MouseEvent mouseEvent) {
         try {
             employee = employeeTable.getSelectionModel().getSelectedItem();
