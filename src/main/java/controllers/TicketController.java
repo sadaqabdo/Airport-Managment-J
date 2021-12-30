@@ -46,9 +46,11 @@ public class TicketController implements Initializable {
     private Button bt_exit;
     // initialize data in tableview each row is a ticket object
     private ObservableList<Ticket> data = FXCollections.observableArrayList();
+
     private ObservableList<Ticket> searcheddata = FXCollections.observableArrayList();
     @FXML
     private Button button_logout, button_flights, button_tickets, button_employee;
+
 
 
     @Override
@@ -108,6 +110,28 @@ public class TicketController implements Initializable {
             }
         });
 
+    }
+    @FXML
+    private void refreshTable() {
+
+        try {
+            searcheddata.clear();
+            Connection connection = DBConnection.getConnection();
+            ResultSet resultSet = null ;
+            String query = "SELECT * FROM `tickets`";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                searcheddata.add(new Ticket(
+                        resultSet.getString("idticket"),
+                        resultSet.getString("passenger"),
+                        resultSet.getString("flight")));
+                Tck.setItems(searcheddata);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
     @FXML
     private void refreshTable() {
