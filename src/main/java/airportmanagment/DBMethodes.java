@@ -116,7 +116,7 @@ public class DBMethodes {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            preparedStatement = con.prepareStatement("SELECT password FROM employee WHERE name = ?");
+            preparedStatement = con.prepareStatement("SELECT password FROM employees WHERE job= 'manager' and name = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
             if (!resultSet.isBeforeFirst()) {
@@ -128,7 +128,7 @@ public class DBMethodes {
                 while (resultSet.next()) {
                     String rPassword = resultSet.getString("password");
                     if (rPassword.equals(password)) {
-                        changeHome(event, "home.fxml", "admin", username);
+                        changeEmployee(event, "employee.fxml", "employee", username);
                     } else {
                         System.out.println("Password did not match");
                         Alert alert = new Alert(Alert.AlertType.ERROR);

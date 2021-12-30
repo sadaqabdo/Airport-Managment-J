@@ -21,6 +21,12 @@ public class Person {
         this.age = age;
         this.nationality = nationality;
     }
+    public Person(String name, int age,String gender, String nationality) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.nationality = nationality;
+    }
 
     public Person() {
 
