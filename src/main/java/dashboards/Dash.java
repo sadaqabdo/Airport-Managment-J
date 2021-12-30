@@ -16,6 +16,8 @@ public class Dash extends Application {
         primaryStage.setScene(new Scene(root));
         //set stage borderless
         primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.setMaximized(true);
+
         primaryStage.show();
 
     }

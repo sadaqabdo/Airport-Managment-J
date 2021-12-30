@@ -16,7 +16,8 @@ public class LoginDashboard extends Application {
             Scene scene = new Scene(root);
 
             stage.setTitle("Login");
-            //stage.setResizable(false);
+            stage.setMaximized(true);
+
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){
