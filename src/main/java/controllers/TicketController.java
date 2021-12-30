@@ -49,7 +49,11 @@ public class TicketController implements Initializable {
     private Button bt_exit;
     // initialize data in tableview each row is a ticket object
     private ObservableList<Ticket> data = FXCollections.observableArrayList();
+
     private ObservableList<Ticket> searcheddata = FXCollections.observableArrayList();
+    @FXML
+    private Button button_logout, button_flights, button_tickets, button_employee;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,6 +86,7 @@ public class TicketController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+      
     button_logout.setOnAction(new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
@@ -101,6 +106,55 @@ public class TicketController implements Initializable {
         }
     });
 }
+
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeScene(event, "login.fxml", "login",null );
+            }
+        });
+        button_flights.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeFlight(event, "flights.fxml", "flights",null );
+            }
+        });
+        button_tickets.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeTicket(event, "Ticket.fxml", "ticket",null );
+            }
+        });
+        button_employee.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeEmployee(event, "employee.fxml", "employee",null );
+            }
+        });
+
+    }
+    @FXML
+    private void refreshTable() {
+
+        try {
+            searcheddata.clear();
+            Connection connection = DBConnection.getConnection();
+            ResultSet resultSet = null ;
+            String query = "SELECT * FROM `tickets`";
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                searcheddata.add(new Ticket(
+                        resultSet.getString("idticket"),
+                        resultSet.getString("passenger"),
+                        resultSet.getString("flight")));
+                Tck.setItems(searcheddata);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     @FXML
     private void refreshTable() {
         try {

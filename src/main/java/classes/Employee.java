@@ -15,34 +15,32 @@ public class Employee extends Person {
         super(id, name, age, gender, nationality);
         this.job = job;
     }
+
+    public Employee(int id, String name) {
+        super(id, name);
+    }
+
+    public Employee(String name, int age, String gender, String nationality, String job) {
+        super(name,age,gender,nationality);
+        this.job = job;
+    }
     public Employee(int id, String name, int salary, String password) {
         super(id, name);
         this.salary = salary;
         this.password=password;
     }
-    /*
-    public Employee(int id, String name, int age, String nationality) {
-        super(id, name, age, nationality);
-    }
-     */
-    public Employee(int id, String name) {
-        super(id, name);
-    }
-
-
-
     public String getJob() {
         return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
     }
     public int getSalary() {
         return salary;
     }
     public String getPassword() {
         return password;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
     }
     public void setSalary(int salary) {
         this.salary = salary;
