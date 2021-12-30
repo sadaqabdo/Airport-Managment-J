@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
   Copyright (c) 2015, 2019, Gluon and/or its affiliates.
   All rights reserved. Use is subject to license terms.
@@ -45,55 +44,64 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
 <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TicketController">
-  <children>
-      <fx:include source="flightmenu.fxml" />
-      <SplitPane dividerPositions="0.3, 0.5" VBox.vgrow="ALWAYS" prefHeight="375.0" prefWidth="640.0">
-         <items>
-            <GridPane alignment="CENTER">
-               <columnConstraints>
-                  <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="150.0" prefWidth="140.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="54.0" minHeight="40.0" prefHeight="54.0" valignment="CENTER" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="96.0" minHeight="40.0" prefHeight="82.0" valignment="CENTER" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="40.0" minHeight="11.0" prefHeight="13.0" valignment="CENTER" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <Button fx:id="Addbtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="10.0" layoutY="225.0" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="21.0" prefWidth="100.0" text="Add Ticket" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                  <TextField fx:id="TicketField" prefHeight="30.0" prefWidth="145.0" promptText="Ticket">
-                     <cursor>
-                        <Cursor fx:constant="TEXT" />
-                     </cursor>
-                  </TextField>
-                  <TextField fx:id="PassengerField" prefHeight="30.0" prefWidth="145.0" promptText="Passenger" GridPane.rowIndex="1" />
-                  <TextField fx:id="FlightField" prefHeight="30.0" prefWidth="145.0" promptText="Flight" GridPane.rowIndex="2" />
-                  <Button fx:id="DeleteBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="24.0" maxWidth="147.0" mnemonicParsing="false" onAction="#OnDeleteButton" prefHeight="24.0" prefWidth="147.0" text="Delete selected Ticket" textAlignment="CENTER" GridPane.rowIndex="4" />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="10.0" top="10.0" />
-               </padding>
-            </GridPane>
-            <ScrollPane  fitToHeight="true" fitToWidth="true" prefHeight="371.0" prefWidth="555.0" SplitPane.resizableWithParent="false">
-               <content>
-                  <TableView fx:id="View">
-                     <columns>
-                        <TableColumn fx:id="ticketcol" prefWidth="128.0" text="Ticket ID" />
-                        <TableColumn fx:id="passengercol" prefWidth="124.0" text="Passenger" />
-                        <TableColumn fx:id="flightcol" minWidth="0.0" prefWidth="130.0" text="Flight" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
-               </content>
-            </ScrollPane>
-         </items>
-      </SplitPane>
-  </children>
+   <MenuBar layoutX="-1.0" layoutY="1.0">
+      <menus>
+         <Menu fx:id="Ticket" mnemonicParsing="false" text="Ticket">
+            <items>
+               <MenuItem  mnemonicParsing="false"  text="View" />
+               <MenuItem  mnemonicParsing="false"  text="Add" />
+               <MenuItem  mnemonicParsing="false"  text="Search" />
+            </items>
+         </Menu>
+      </menus>
+   </MenuBar>
+   <SplitPane dividerPositions="0.3" prefHeight="375.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <GridPane alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="150.0" prefWidth="140.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="54.0" minHeight="40.0" prefHeight="54.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="96.0" minHeight="40.0" prefHeight="82.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="11.0" prefHeight="13.0" valignment="CENTER" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+         <Button fx:id="Addbtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="10.0" layoutY="225.0" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="21.0" prefWidth="100.0" text="Add Ticket" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+         <TextField fx:id="TicketField" prefHeight="30.0" prefWidth="145.0" promptText="Ticket" GridPane.rowIndex="2">
+            <cursor>
+               <Cursor fx:constant="TEXT" />
+            </cursor>
+         </TextField>
+         <TextField fx:id="PassengerField" prefHeight="30.0" prefWidth="145.0" promptText="Passenger" GridPane.rowIndex="3" />
+         <TextField fx:id="FlightField" prefHeight="30.0" prefWidth="145.0" promptText="Flight" GridPane.rowIndex="4" />
+         <Button fx:id="DeleteBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="24.0" maxWidth="147.0" mnemonicParsing="false" onAction="#OnDeleteButton" prefHeight="24.0" prefWidth="147.0" text="Delete selected Ticket" textAlignment="CENTER" GridPane.rowIndex="6" />
+         <TextField fx:id="searchField" GridPane.rowIndex="1" />
+         <Button fx:id="searchbtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" maxHeight="24.0" maxWidth="100.0" mnemonicParsing="false" onAction="#OnsearchButton" prefHeight="24.0" prefWidth="64.0" text="search" textAlignment="CENTER" />
+      </GridPane>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="371.0" prefWidth="555.0" SplitPane.resizableWithParent="false">
+         <TableView fx:id="Tck">
+            <columns>
+               <TableColumn fx:id="ticketcol" prefWidth="128.0" text="Ticket ID" />
+               <TableColumn fx:id="passengercol" prefWidth="124.0" text="Passenger" />
+               <TableColumn fx:id="flightcol" minWidth="0.0" prefWidth="130.0" text="Flight" />
+            </columns>
+            <columnResizePolicy>
+               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+         </TableView>
+      </ScrollPane>
+   </SplitPane>
 </VBox>
