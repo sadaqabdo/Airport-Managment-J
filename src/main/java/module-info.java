@@ -3,7 +3,6 @@ module dashboards {
     requires java.sql;
     requires javafx.graphics;
     requires javafx.controls;
-    requires com.jfoenix;
     requires java.base;
 
     opens dashboards to javafx.fxml;
