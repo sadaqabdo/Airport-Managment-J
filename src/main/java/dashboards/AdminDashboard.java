@@ -8,15 +8,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginDashboard extends Application {
+public class AdminDashboard extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            Parent root = FXMLLoader.load(LoginDashboard.class.getResource("login.fxml"));
+            Parent root = FXMLLoader.load(AdminDashboard.class.getResource("admin.fxml"));
             Scene scene = new Scene(root);
 
-            stage.setTitle("Login");
-            //stage.setResizable(false);
+            stage.setTitle("Admin");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){

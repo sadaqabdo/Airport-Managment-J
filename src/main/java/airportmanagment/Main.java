@@ -1,5 +1,6 @@
 package airportmanagment;
 
+import dashboards.AdminDashboard;
 import dashboards.FlightsDashboard;
 import dashboards.LoginDashboard;
 import classes.*;
