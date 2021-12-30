@@ -132,7 +132,7 @@
                         <Label text="job" textFill="WHITE" GridPane.rowIndex="3" />
                             </children>
                         </GridPane>
-                        <TableView fx:id="employeeTable" layoutX="375.0" layoutY="149.0" onMouseClicked="#tableview" prefHeight="332.0" prefWidth="439.0" style="-fx-background-color: white; -fx-border-color: black;">
+                        <TableView fx:id="employeeTable" layoutX="375.0" layoutY="149.0" onMouseClicked="#tableview" prefHeight="332.0" prefWidth="466.0" style="-fx-background-color: white; -fx-border-color: black;">
                             <columns>
                                 <TableColumn fx:id="nameCol" prefWidth="65.5999755859375" text="name" />
                                 <TableColumn fx:id="ageCol" prefWidth="56.0" text="age" />
@@ -191,6 +191,7 @@
                               </Button>
                      </children>
                   </GridPane>
+                  <Button fx:id="search" layoutX="472.0" layoutY="31.0" mnemonicParsing="false" onAction="#OnsearchButton" text="search" />
                     </children>
                 </Pane>
             </children>
