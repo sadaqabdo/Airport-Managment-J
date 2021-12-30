@@ -20,7 +20,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 
 public class EmployeesController implements Initializable {
@@ -97,25 +99,26 @@ public class EmployeesController implements Initializable {
             PreparedStatement preparedStatement=null;
 
             if ((Employee)e instanceof Employee){
-                String sql = "Insert into Employee(name,age,gender,nationality,job" +
-                             "values(?,?,?,?,?);";
+                String sql = "INSERT INTO employees VALUES('"+empname+"',"+empage+",'"+empnationality+"','"+empgender+"','"+empjob+"') ";
                 int resultSet = 0;
-                System.out.print(((Employee) e).getName());
+                System.out.println(((Employee) e).getName());
                 System.out.println(((Employee) e).getAge());
-                preparedStatement = con.prepareStatement(sql);
+                System.out.println(((Employee) e).getNationality());
+                System.out.println(((Employee) e).getGender());
+                System.out.println(((Employee) e).getJob());
+                /*preparedStatement = con.prepareStatement(sql);
                 preparedStatement.setString(1, ((Employee) e).getName());
                 preparedStatement.setInt(2,  ((Employee) e).getAge());
                 preparedStatement.setString(3, ((Employee) e).getGender());
                 preparedStatement.setString(4, ((Employee) e).getNationality());
-                preparedStatement.setString(5, ((Employee) e).getJob());
+                preparedStatement.setString(5, ((Employee) e).getJob());*/
 
-
+                preparedStatement.execute(sql);
                 resultSet=preparedStatement.executeUpdate();
                 System.out.println("A new record was inserted successfully!");
                 con.close();
+
             }
-
-
         }
         catch(Exception ee){
             ee.printStackTrace();
@@ -142,6 +145,69 @@ public class EmployeesController implements Initializable {
         int selected = EmpTable.getSelectionModel().getSelectedIndex();
         EmpTable.getItems().remove(selected);
     }
+
+    //////////////////////
+    private void searchData(Object e){
+        ObservableList<Employee> donnee = FXCollections.observableArrayList();
+
+        try{
+            Connection con = DBConnection.getConnection();
+            Statement st = con.createStatement();
+            PreparedStatement preparedStatement=null;
+
+            if ((Employee)e instanceof Employee){
+                String sql = "Select source from Flight where source = ?;";
+                //"and destination like lower(?) and departdate > ? and arrivingdate < ? and terminal like ? and airplaneid like ? and pilotid like ?;";
+
+                ResultSet resultSet;
+                preparedStatement = con.prepareStatement(sql);
+                preparedStatement.setString(1,  "'"+ ((Employee) e).getJob()+  "'");
+                System.out.println(preparedStatement.getMetaData());
+
+                /*preparedStatement.setString(2, ((Flight) obj).getDestination());
+                preparedStatement.setString(3, ((Flight) obj).getDepartDate().toString());
+                preparedStatement.setString(4, ((Flight) obj).getArrivingDate().toString());
+                preparedStatement.setString(5, ((Flight) obj).getTerminal());
+                preparedStatement.setInt(6, ((Flight) obj).getPilotID());
+                preparedStatement.setString(7, ((Flight) obj).getAirplaneID());*/
+                preparedStatement = con.prepareStatement(sql);
+
+                resultSet = preparedStatement.executeQuery();
+                System.out.println("A new record was inserted successfully!");
+
+                while(resultSet.next()){
+                    System.out.println(resultSet.getString(1));
+                }
+                con.close();
+            }
+
+
+
+
+        }
+        catch(Exception ee){
+            ee.printStackTrace();
+            System.out.println("Error on Searching Data");
+        }
+
+    }
+    //////////////////////
+    @FXML
+    private void onsearchflight(ActionEvent event) throws ParseException {
+        String ename = empname.getText();
+        Integer eage = Integer.parseInt(empage.getText());
+        String egender =empgender.getText();
+        String enationality = empnationality.getText();
+        String ejob = empjob.getText();
+        Employee e = new Employee(ename, eage, egender, enationality, ejob);
+
+        searchData(e);
+    }
+    //////////////////////
+
+
+
+
     public void backToMain(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/dashboards/Main.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

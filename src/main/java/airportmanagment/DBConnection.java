@@ -16,10 +16,10 @@ import java.sql.*;
 public class DBConnection {
 
     private static final String HOST = "localhost";
-    private static final int PORT = 3306;
-    private static final String DB_NAME = "airport_management_db";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "";
+    private static final int PORT = 1521;
+    private static final String DB_NAME = "BDA";
+    private static final String USERNAME = "system";
+    private static final String PASSWORD = "admin";
 
     private static Connection connection;
     Statement stm;
@@ -29,7 +29,7 @@ public class DBConnection {
         String s = "jdbc:oracle:thin:@localhost:1521:XE";
         //jdbc:mysql://localhost:3306/airport_management_db
         try {
-            //connection = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
+            //connection = DriverManager.getConnection("jdbc:oracle:thin:@" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
             connection = DriverManager.getConnection("jdbc:oracle:thin:@" + HOST + ":" + PORT + ":XE", USERNAME, PASSWORD);
         } catch (SQLException se) {
             System.out.println("Connexion failed:" + se);

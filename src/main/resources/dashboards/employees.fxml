@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -115,12 +116,13 @@
                                 <Font size="14.0" />
                             </font>
                         </Button>
-                        <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" graphicTextGap="2.0" maxHeight="26.0" maxWidth="49.0" minWidth="50.0" mnemonicParsing="false" onAction="#onCloseAddBtn" prefHeight="26.0" prefWidth="50.0" style="-fx-background-color: none;" text="Close" textAlignment="CENTER" textFill="RED" GridPane.rowIndex="6">
+                        <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" graphicTextGap="2.0" maxHeight="26.0" maxWidth="49.0" minWidth="50.0" mnemonicParsing="false" onAction="#onCloseAddBtn" prefHeight="26.0" prefWidth="50.0" style="-fx-background-color: none;" text="Close" textAlignment="CENTER" GridPane.rowIndex="6">
                             <font>
-                                <Font size="12.0" />
+                                <Font size="15.0" />
                             </font>
                         </Button>
-                  <Button mnemonicParsing="false" onAction="#onDeleteEmp" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Button mnemonicParsing="false" onAction="#onDeleteEmp" text="DELETE" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <JFXButton onAction="#onsearchflight" text="SEARCH" GridPane.rowIndex="7" />
                     </children>
                     <opaqueInsets>
                         <Insets />
