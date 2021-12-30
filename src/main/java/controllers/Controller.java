@@ -1,4 +1,6 @@
 package controllers;
+
+
 import airportmanagment.DBConnection;
 import airportmanagment.DBMethodes;
 import classes.Employee;
@@ -11,13 +13,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
+public class Controller implements Initializable {
 
-public class AdminController implements Initializable {
 
+
+    @FXML
+    private Pane pnlOverview;
     @FXML
     private Button button_logout;
     @FXML
@@ -28,18 +36,48 @@ public class AdminController implements Initializable {
     private Button bt_modify;
     @FXML
     private Button bt_refresh;
-
-
-    
+    @FXML
+    private Button button_flights;
+    @FXML
+    private Button button_tickets;
+    @FXML
+    private Button button_employee;
+    @FXML
+    private Button bt_exit;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadDate();
 
+        bt_exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+            }
+        });
+
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 DBMethodes.changeScene(event, "login.fxml", "login",null );
+            }
+        });
+        button_flights.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeFlight(event, "flights.fxml", "flights",null );
+            }
+        });
+        button_tickets.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeTicket(event, "Ticket.fxml", "ticket",null );
+            }
+        });
+        button_employee.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeEmployee(event, "employees.fxml", "employee",null );
             }
         });
     }
@@ -91,8 +129,6 @@ public class AdminController implements Initializable {
     Employee employee = null ;
     ObservableList<Employee> EmployeeList = FXCollections.observableArrayList();
     Connection connection = DBConnection.getConnection();
-
-
     @FXML
     private TableView<Employee> employeeTable;
     @FXML
@@ -128,15 +164,15 @@ public class AdminController implements Initializable {
             ex.printStackTrace();
         }
     }
-        private void loadDate() {
-            refreshTable();
+    private void loadDate() {
+        refreshTable();
 
-            idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-            nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-            salaryCol.setCellValueFactory(new PropertyValueFactory<>("salary"));
-            passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        salaryCol.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
 
-        }
+    }
     @FXML
     private TextField tf_id;
     @FXML
@@ -196,9 +232,6 @@ public class AdminController implements Initializable {
 
     }
 
-
-
-
     void setTextField(String id, String name, String salary, String password) {
 
         tf_id.setText(id);
@@ -209,8 +242,13 @@ public class AdminController implements Initializable {
     }
 
     public void tableview(MouseEvent mouseEvent) {
-        employee = employeeTable.getSelectionModel().getSelectedItem();
-        setTextField(String.valueOf(employee.getId()),employee.getName(),String.valueOf(employee.getSalary()), employee.getPassword());
+        try {
+            employee = employeeTable.getSelectionModel().getSelectedItem();
+            setTextField(String.valueOf(employee.getId()),employee.getName(),String.valueOf(employee.getSalary()), employee.getPassword());
+        }catch (Exception e){
+            e.getMessage();
+        }
+
 
     }
 }

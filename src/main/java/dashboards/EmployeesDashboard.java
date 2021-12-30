@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 public class EmployeesDashboard extends Application {
     @Override
-
     public void start(Stage stage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("employees.fxml"));

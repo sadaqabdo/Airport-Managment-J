@@ -1,6 +1,6 @@
 package airportmanagment;
 
-import dashboards.LoginDashboard;
+import dashboards.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -26,7 +26,7 @@ public class DBMethodes {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle(title);
 
-            stage.setScene(new Scene(root, 600, 400));
+            stage.setScene(new Scene(root));
 
             stage.show();
 
@@ -35,7 +35,82 @@ public class DBMethodes {
         }
 
     }
+    public static void changeHome(ActionEvent event, String fxmlFile, String title, String username) {
 
+        try {
+            //FXMLLoader loader= new FXMLLoader(LoginDashboard.class.getResource(fxmlFile));
+            Parent root = FXMLLoader.load(Dash.class.getResource(fxmlFile));
+
+            //Parent root =loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Scene error");
+        }
+
+    }
+    public static void changeFlight(ActionEvent event, String fxmlFile, String title, String username) {
+
+        try {
+            //FXMLLoader loader= new FXMLLoader(LoginDashboard.class.getResource(fxmlFile));
+            Parent root = FXMLLoader.load(FlightsDashboard.class.getResource(fxmlFile));
+
+            //Parent root =loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Scene error");
+        }
+
+    }
+    public static void changeEmployee(ActionEvent event, String fxmlFile, String title, String username) {
+
+        try {
+            //FXMLLoader loader= new FXMLLoader(LoginDashboard.class.getResource(fxmlFile));
+            Parent root = FXMLLoader.load(EmployeesDashboard.class.getResource(fxmlFile));
+
+            //Parent root =loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Scene error");
+        }
+
+    }
+    public static void changeTicket(ActionEvent event, String fxmlFile, String title, String username) {
+
+        try {
+            //FXMLLoader loader= new FXMLLoader(LoginDashboard.class.getResource(fxmlFile));
+            Parent root = FXMLLoader.load(TicketsDashboard.class.getResource(fxmlFile));
+
+            //Parent root =loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+
+            stage.setScene(new Scene(root));
+
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Scene error");
+        }
+
+    }
     public static void logInUser(ActionEvent event, String username, String password) {
         Connection con = DBConnection.getConnection();
         PreparedStatement preparedStatement = null;
@@ -53,7 +128,7 @@ public class DBMethodes {
                 while (resultSet.next()) {
                     String rPassword = resultSet.getString("password");
                     if (rPassword.equals(password)) {
-                        changeScene(event, "admin.fxml", "admin", username);
+                        changeHome(event, "home.fxml", "admin", username);
                     } else {
                         System.out.println("Password did not match");
                         Alert alert = new Alert(Alert.AlertType.ERROR);

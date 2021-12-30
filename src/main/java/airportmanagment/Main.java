@@ -19,7 +19,7 @@ public class Main {
             System.out.println("Connexion success:");
         }
 
-        launch(AdminDashboard.class, args);
+        launch(LoginDashboard.class, args);
     }
     Employee e=new Employee();
 
