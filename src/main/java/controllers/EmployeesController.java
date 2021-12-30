@@ -6,6 +6,7 @@ import airportmanagment.DBMethodes;
 import classes.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class EmployeesController implements Initializable {
@@ -251,7 +253,55 @@ public class EmployeesController implements Initializable {
         tf_gender.setText(gender);
 
     }
+    ///
+    @FXML
+    private Button search;
+    private ObservableList<Employee> searcheddata = FXCollections.observableArrayList();
+    public void searchForemp(String name){
+        try {
+            Connection con = DBConnection.getConnection();
+            Statement st = con.createStatement();
+            String sql = "select * from employees where upper(name) like ?";
+            ResultSet resultSet;
+            preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1,name.toUpperCase(Locale.ROOT));
+            resultSet = preparedStatement.executeQuery();
+            System.out.println("Row found from database!");
 
+            while(resultSet.next()) {
+                Employee selectedTicket = new Employee(resultSet.getString(1), resultSet.getInt(2),
+                        resultSet.getString(3),resultSet.getString(4),resultSet.getString(5));
+                searcheddata.add(selectedTicket);
+                System.out.println(selectedTicket);
+                for (int i = 0; i < employeeTable.getItems().size(); i++) {
+                    if (employeeTable.getItems().get(i).getName().equals(resultSet.getString(1))) {
+                        System.out.println("Selected Index : " + i);
+                    }
+                }
+                System.out.println(resultSet.getString(1));
+                System.out.println(resultSet.getString(1).getClass().getName());
+            }
+            employeeTable.setItems(searcheddata);
+
+            con.close();
+        }catch (SQLException ee) {
+            ee.printStackTrace();
+        }
+
+    }
+    public void OnsearchButton() {
+        if (search_barre.getText().isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("search field empty");
+            // show the dialog error
+            a.show();
+        }else{
+            employeeTable.getItems().clear();
+            searchForemp(search_barre.getText());
+        }
+    }
+    ///
     public void tableview(MouseEvent mouseEvent) {
         try {
             Employee e = employeeTable.getSelectionModel().getSelectedItem();
@@ -259,7 +309,5 @@ public class EmployeesController implements Initializable {
         }catch (Exception ee){
             ee.getMessage();
         }
-
-
     }
 }
