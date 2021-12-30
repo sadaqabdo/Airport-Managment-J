@@ -16,7 +16,7 @@ public class AdminDashboard extends Application {
             Scene scene = new Scene(root);
 
             stage.setTitle("Admin");
-            stage.setResizable(false);
+            stage.setMaximized(true);
             stage.setScene(scene);
             stage.show();
         }catch (IOException e){
