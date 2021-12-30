@@ -35,7 +35,8 @@
                         <Insets bottom="20.0" />
                     </VBox.margin>
                 </Label>
-                <Button fx:id="button_flights" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #05071F;" stylesheets="@style.css" text="Flights" textFill="#e7e5e5">
+                <Button fx:id="button_flights" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Flights" textFill="#e7e5e5">
+
 
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -54,7 +55,8 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="button_employee" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #05071F; -fx-text-fill: #e7e5e5;" stylesheets="@style.css" text="Employee">
+                <Button fx:id="button_employee" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Employee">
+
 
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -68,7 +70,8 @@
                     </padding>
                 </Button>
 
-                <Button fx:id="button_tickets" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #05071F; -fx-text-fill: #e7e5e5;" stylesheets="@style.css" text="Tickets">
+                <Button fx:id="button_tickets" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Tickets">
+
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -80,7 +83,8 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="button_logout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #05071F; -fx-text-fill: #e7e5e5;" stylesheets="@style.css" text="Log out">
+                <Button fx:id="button_logout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Log out">
+
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
