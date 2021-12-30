@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="756.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="481.0" prefWidth="756.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <Label layoutX="421.0" layoutY="89.0" text="Login" textFill="#3971a1">
+      <Label layoutX="421.0" layoutY="89.0" text="Login" textFill="#11c7ff">
          <font>
             <Font name="Arial Black" size="32.0" />
          </font>
@@ -41,21 +41,21 @@
             <Image url="@../images/password.png" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="481.0" prefWidth="245.0" scaleShape="false" style="-fx-background-color: #3971a1;">
+      <AnchorPane prefHeight="481.0" prefWidth="245.0" scaleShape="false" style="-fx-background-color: #05071F;">
          <children>
-            <Label layoutX="68.0" layoutY="205.0" text="Airport " textFill="#434343" wrapText="true">
+            <Label layoutX="68.0" layoutY="205.0" text="Airport " textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="31.0" layoutY="261.0" text="Management" textFill="#434343" wrapText="true">
+            <Label layoutX="31.0" layoutY="261.0" text="Management" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Arial Bold" size="30.0" />
                </font>
             </Label>
             <ImageView fitHeight="107.0" fitWidth="109.0" layoutX="62.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 70;">
                <image>
-                  <Image url="@../images/airplane.png" />
+                  <Image url="@../images/world.gif" />
                </image>
             </ImageView>
          </children>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="1189.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EmployeesController">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutY="-1.0" prefHeight="576.0" prefWidth="258.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="1.0" AnchorPane.topAnchor="-1.0">
+            <children>
+                <ImageView fitHeight="161.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/world.gif" />
+                    </image>
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="50.0" />
+                    </VBox.margin></ImageView>
+                <Label text="Airport Management" textFill="#e7e5e5">
+                    <VBox.margin>
+                        <Insets bottom="20.0" />
+                    </VBox.margin>
+                </Label>
+                <Button fx:id="button_flights" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Flights" textFill="#e7e5e5">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Home_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="button_employee" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Employee">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Person_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="button_tickets" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Tickets">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Box_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="button_logout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Log out">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Sign_Out_32px.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <AnchorPane />
+            </children>
+        </VBox>
+        <StackPane layoutX="256.0" layoutY="-1.0" prefHeight="716.0" prefWidth="931.0" style="-fx-background-color: #02030A;">
+            <children>
+                <Pane fx:id="pnlOverview" prefHeight="694.0" prefWidth="928.0">
+                    <children>
+                        <TextField fx:id="search_barre" layoutX="549.0" layoutY="29.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                        <Label layoutX="57.0" layoutY="25.0" text="Airport Management" textFill="#e7e5e5">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="742.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/icons8_Search_52px.png" />
+                            </image>
+                        </ImageView>
+                        <GridPane layoutX="36.0" layoutY="235.0" prefHeight="138.0" prefWidth="264.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="name" textFill="WHITE" />
+                                <TextField fx:id="tf_name" GridPane.columnIndex="1" />
+                                <Label text="age" textFill="WHITE" GridPane.rowIndex="1" />
+                                <TextField fx:id="tf_age" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label text="nationality" textFill="WHITE" GridPane.rowIndex="4" />
+                                <TextField fx:id="tf_nationality" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="gender" textFill="WHITE" GridPane.rowIndex="2" />
+                        <TextField fx:id="tf_gender" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="tf_job" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="job" textFill="WHITE" GridPane.rowIndex="3" />
+                            </children>
+                        </GridPane>
+                        <TableView fx:id="employeeTable" layoutX="375.0" layoutY="149.0" onMouseClicked="#tableview" prefHeight="332.0" prefWidth="439.0" style="-fx-background-color: white; -fx-border-color: black;">
+                            <columns>
+                                <TableColumn fx:id="nameCol" prefWidth="65.5999755859375" text="name" />
+                                <TableColumn fx:id="ageCol" prefWidth="56.0" text="age" />
+                                <TableColumn fx:id="genderCol" prefWidth="77.5999755859375" text="gender" />
+                        <TableColumn fx:id="nationalityCol" prefWidth="115.20001220703125" text="nationality" />
+                        <TableColumn fx:id="jobCol" prefWidth="124.79998779296875" text="job" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="bt_exit" alignment="TOP_LEFT" layoutX="875.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: #de0000;" text="exit" textFill="WHITE">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                  <GridPane layoutX="282.0" layoutY="561.0" prefHeight="62.0" prefWidth="406.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                              <Button fx:id="bt_add" mnemonicParsing="false" onMouseClicked="#getAddView" prefHeight="40.0" prefWidth="85.0" style="-fx-background-color: #2a73ff;" text="add" textFill="WHITE">
+                                  <font>
+                                      <Font size="18.0" />
+                                  </font>
+                                  <cursor>
+                                      <Cursor fx:constant="HAND" />
+                                  </cursor>
+                              </Button>
+                              <Button fx:id="bt_modify" mnemonicParsing="false" onMouseClicked="#getModifyView" style="-fx-background-color: #26bfbc;" text="modify" textFill="WHITE" GridPane.columnIndex="1">
+                                  <font>
+                                      <Font size="18.0" />
+                                  </font>
+                                  <cursor>
+                                      <Cursor fx:constant="HAND" />
+                                  </cursor>
+                              </Button>
+                              <Button fx:id="bt_delete" mnemonicParsing="false" onMouseClicked="#getDeleteView" style="-fx-background-color: #fa5f7e;" text="delete" textFill="WHITE" GridPane.columnIndex="2">
+                                  <font>
+                                      <Font size="18.0" />
+                                  </font>
+                                  <cursor>
+                                      <Cursor fx:constant="HAND" />
+                                  </cursor>
+                              </Button>
+                              <Button fx:id="bt_refresh" mnemonicParsing="false" onMouseClicked="#refreshTable" style="-fx-background-color: #de0000;" text="refresh" textFill="WHITE" GridPane.columnIndex="3">
+                                  <font>
+                                      <Font size="18.0" />
+                                  </font>
+                                  <cursor>
+                                      <Cursor fx:constant="HAND" />
+                                  </cursor>
+                              </Button>
+                     </children>
+                  </GridPane>
+                    </children>
+                </Pane>
+            </children>
+        </StackPane>
+    </children>
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+</AnchorPane>
