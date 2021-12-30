@@ -27,23 +27,10 @@ public class Controller implements Initializable {
     @FXML
     private Pane pnlOverview;
     @FXML
-    private Button button_logout;
+    private Button button_logout, bt_add, bt_delete, bt_modify, bt_exit;
     @FXML
-    private Button bt_add;
-    @FXML
-    private Button bt_delete;
-    @FXML
-    private Button bt_modify;
-    @FXML
-    private Button bt_refresh;
-    @FXML
-    private Button button_flights;
-    @FXML
-    private Button button_tickets;
-    @FXML
-    private Button button_employee;
-    @FXML
-    private Button bt_exit;
+    private Button bt_refresh, button_flights, button_tickets, button_employee;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -132,13 +119,9 @@ public class Controller implements Initializable {
     @FXML
     private TableView<Employee> employeeTable;
     @FXML
-    private TableColumn<Employee, Integer> idCol;
+    private TableColumn<Employee, Integer> idCol, salaryCol;
     @FXML
-    private TableColumn<Employee, String> nameCol;
-    @FXML
-    private TableColumn<Employee, Integer> salaryCol;
-    @FXML
-    private TableColumn<Employee, String> passwordCol;
+    private TableColumn<Employee, String> nameCol, passwordCol;
 
     @FXML
     private void refreshTable() {
@@ -174,13 +157,7 @@ public class Controller implements Initializable {
 
     }
     @FXML
-    private TextField tf_id;
-    @FXML
-    private TextField tf_name;
-    @FXML
-    private TextField tf_salary;
-    @FXML
-    private TextField tf_password;
+    private TextField tf_id, tf_name, tf_salary, tf_password;
 
     @FXML
     private void getAddView(MouseEvent event) {
