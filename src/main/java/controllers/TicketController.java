@@ -4,10 +4,14 @@ import airportmanagment.DBConnection;
 import classes.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.*;
@@ -36,6 +40,8 @@ public class TicketController implements Initializable {
     private TableColumn<Ticket, String> flightcol;
     @FXML
     private Button DeleteBtn, AddBtn ;
+    @FXML
+    private Button bt_exit;
     // initialize data in tableview each row is a ticket object
     private ObservableList<Ticket> data = FXCollections.observableArrayList();
     private ObservableList<Ticket> searcheddata = FXCollections.observableArrayList();
@@ -43,6 +49,13 @@ public class TicketController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        bt_exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+            }
+        });
+
         TableView.TableViewSelectionModel<Ticket> defaultSelectionModel = Tck.getSelectionModel();
         Tck.setSelectionModel(defaultSelectionModel);
 
@@ -234,5 +247,19 @@ public class TicketController implements Initializable {
             searchForticket(searchField.getText());
         }
     }
-    // reset button
+    void setTextField(String ticket, String passenger, String flight) {
+
+        TicketField.setText(ticket);
+        PassengerField.setText(passenger);
+        FlightField.setText(flight);
+
+    }
+    public void tableview(MouseEvent mouseEvent) {
+        try {
+            Ticket tick = Tck.getSelectionModel().getSelectedItem();
+            setTextField(String.valueOf(tick.getTicketID()),tick.getPassenger(),String.valueOf(tick.getFlight()));
+        }catch (Exception e){
+            e.getMessage();
+        }
+    }
 }
