@@ -1,6 +1,7 @@
 package controllers;
 
 import airportmanagment.DBConnection;
+import airportmanagment.DBMethodes;
 import classes.Employee;
 import classes.Ticket;
 import javafx.collections.FXCollections;
@@ -46,6 +47,8 @@ public class TicketController implements Initializable {
     // initialize data in tableview each row is a ticket object
     private ObservableList<Ticket> data = FXCollections.observableArrayList();
     private ObservableList<Ticket> searcheddata = FXCollections.observableArrayList();
+    @FXML
+    private Button button_logout, button_flights, button_tickets, button_employee;
 
 
     @Override
@@ -79,6 +82,31 @@ public class TicketController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        button_logout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeScene(event, "login.fxml", "login",null );
+            }
+        });
+        button_flights.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeFlight(event, "flights.fxml", "flights",null );
+            }
+        });
+        button_tickets.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeTicket(event, "Ticket.fxml", "ticket",null );
+            }
+        });
+        button_employee.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                DBMethodes.changeEmployee(event, "employee.fxml", "employee",null );
+            }
+        });
 
     }
     @FXML
