@@ -73,13 +73,12 @@ public class Controller implements Initializable {
     public void getModifyView(MouseEvent mouseEvent) {
 
         try {
-
             employee = employeeTable.getSelectionModel().getSelectedItem();
-            query = "UPDATE `employee` SET "
-                    + "`id`=?,"
-                    + "`name`=?,"
-                    + "`salary`=?,"
-                    + "`password`= ? WHERE id = '" + employee.getId() + "'";
+            query = "UPDATE employee SET "
+                    + "id=?,"
+                    + "name=?,"
+                    + "salary=?,"
+                    + "password= ? WHERE id = '" + employee.getId() + "'";
 
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, tf_id.getText());
@@ -98,7 +97,7 @@ public class Controller implements Initializable {
     public void getDeleteView(MouseEvent mouseEvent) {
         try{
             employee = employeeTable.getSelectionModel().getSelectedItem();
-            query = "DELETE FROM `employee` WHERE id  ="+employee.getId();
+            query = "DELETE FROM employee WHERE id  ="+employee.getId();
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.execute();
             refreshTable();
@@ -127,7 +126,7 @@ public class Controller implements Initializable {
         try {
             EmployeeList.clear();
 
-            query = "SELECT * FROM `employee`";
+            query = "SELECT * FROM employee";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
@@ -215,9 +214,8 @@ public class Controller implements Initializable {
         tf_name.setText(name);
         tf_salary.setText(salary);
         tf_password.setText(password);
-
     }
-
+    @FXML
     public void tableview(MouseEvent mouseEvent) {
         try {
             employee = employeeTable.getSelectionModel().getSelectedItem();
