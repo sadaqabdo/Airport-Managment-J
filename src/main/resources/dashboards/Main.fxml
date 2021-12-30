@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f0b161e2bb5f622ee1a5ae6175ccd64d16bea3e8
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>

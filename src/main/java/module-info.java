@@ -5,7 +5,6 @@ module dashboards {
     requires javafx.controls;
     requires com.jfoenix;
     requires java.base;
-    requires mysql.connector.java;
 
     opens dashboards to javafx.fxml;
     opens controllers to javafx.fxml;

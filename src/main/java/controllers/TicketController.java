@@ -38,6 +38,8 @@ public class TicketController implements Initializable {
     private Button DeleteBtn, AddBtn ;
     // initialize data in tableview each row is a ticket object
     private ObservableList<Ticket> data = FXCollections.observableArrayList();
+    private ObservableList<Ticket> searcheddata = FXCollections.observableArrayList();
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -201,19 +203,21 @@ public class TicketController implements Initializable {
             resultSet = preparedStatement.executeQuery();
             System.out.println("Row found from database!");
 
-            while(resultSet.next()){
-                Ticket selectedTicket = new Ticket(resultSet.getString(1),resultSet.getString(2),
+            while(resultSet.next()) {
+                Ticket selectedTicket = new Ticket(resultSet.getString(1), resultSet.getString(2),
                         resultSet.getString(3));
+                searcheddata.add(selectedTicket);
                 System.out.println(selectedTicket);
                 for (int i = 0; i < Tck.getItems().size(); i++) {
-                    if (Tck.getItems().get(i).getTicketID().equals(resultSet.getString(1)) ) {
-                        System.out.println("Selected Index : "+i);
+                    if (Tck.getItems().get(i).getTicketID().equals(resultSet.getString(1))) {
+                        System.out.println("Selected Index : " + i);
                     }
                 }
                 System.out.println(resultSet.getString(1));
                 System.out.println(resultSet.getString(1).getClass().getName());
             }
-                // know index of the searched
+            Tck.setItems(searcheddata);
+
             con.close();
         }catch (SQLException e) {
             e.printStackTrace();
@@ -226,8 +230,10 @@ public class TicketController implements Initializable {
             a.setContentText("search field empty");
             // show the dialog error
             a.show();
+        }else{
+            searchForticket(searchField.getText());
         }
-        searchForticket(searchField.getText());
     }
+    // reset button
 }
 

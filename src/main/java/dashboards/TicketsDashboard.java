@@ -12,7 +12,7 @@ public class TicketsDashboard extends Application{
 
     @Override
     public void start(Stage stage) throws IOException {
-
+           try {
             FXMLLoader fxmlLoader = new FXMLLoader(TicketsDashboard.class.getResource("Ticket.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 900, 500);   
             Image image = new Image("file:src/main/resources/dashboards/logo.png");
@@ -22,5 +22,8 @@ public class TicketsDashboard extends Application{
             stage.getIcons().add(image);
             stage.show();
 
+        } catch (IOException e) {
+            System.out.println(e.getCause());
+        }
     }
 }
