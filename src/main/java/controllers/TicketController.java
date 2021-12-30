@@ -2,7 +2,6 @@ package controllers;
 
 import airportmanagment.DBConnection;
 import airportmanagment.DBMethodes;
-import classes.Employee;
 import classes.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,15 +20,21 @@ import java.text.ParseException;
 import java.util.ResourceBundle;
 
 public class TicketController implements Initializable {
-    @FXML
-    public MenuItem SearchMenu;
+    // bring elements from FXML
     @FXML
     public TextField searchField;
     @FXML
     public Button searchbtn;
+    @FXML
     public Button Addbtn;
-    public Menu Ticket;
-    // bring elements from FXML
+    @FXML
+    public Button button_flights;
+    @FXML
+    public Button button_employee;
+    @FXML
+    public Button button_tickets;
+    @FXML
+    public Button button_logout;
     @FXML
     private TextField TicketField, PassengerField, FlightField;
     @FXML
@@ -41,8 +46,6 @@ public class TicketController implements Initializable {
     @FXML
     private TableColumn<Ticket, String> flightcol;
     @FXML
-    private Button DeleteBtn, AddBtn ;
-    @FXML
     private Button bt_exit;
     // initialize data in tableview each row is a ticket object
     private ObservableList<Ticket> data = FXCollections.observableArrayList();
@@ -50,7 +53,6 @@ public class TicketController implements Initializable {
     private ObservableList<Ticket> searcheddata = FXCollections.observableArrayList();
     @FXML
     private Button button_logout, button_flights, button_tickets, button_employee;
-
 
 
     @Override
@@ -84,6 +86,26 @@ public class TicketController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+      
+    button_logout.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            DBMethodes.changeScene(event, "login.fxml", "login",null );
+        }
+    });
+        button_flights.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            DBMethodes.changeFlight(event, "flights.fxml", "flights",null );
+        }
+    });
+        button_employee.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            DBMethodes.changeEmployee(event, "employees.fxml", "employee",null );
+        }
+    });
+}
 
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -135,7 +157,6 @@ public class TicketController implements Initializable {
     }
     @FXML
     private void refreshTable() {
-
         try {
             searcheddata.clear();
             Connection connection = DBConnection.getConnection();
@@ -155,7 +176,6 @@ public class TicketController implements Initializable {
             ex.printStackTrace();
         }
     }
-
     @FXML
     public void onAddButtonClick() throws ParseException {
         Ticket ticKet = new Ticket(TicketField.getText(), PassengerField.getText(), FlightField.getText());
@@ -280,7 +300,6 @@ public class TicketController implements Initializable {
     }
 
     public void searchForticket(String passenger){
-
         try {
             Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
@@ -319,7 +338,9 @@ public class TicketController implements Initializable {
             // show the dialog error
             a.show();
         }else{
+            Tck.getItems().clear();
             searchForticket(searchField.getText());
+            searchField.clear();
         }
     }
     void setTextField(String ticket, String passenger, String flight) {
