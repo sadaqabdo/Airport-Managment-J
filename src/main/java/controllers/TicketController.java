@@ -16,18 +16,18 @@ import java.util.ResourceBundle;
 
 public class TicketController implements Initializable {
     @FXML
-    public Menu TicketMenu;
-    @FXML
-    public MenuItem AddMenu;
-    @FXML
     public MenuItem SearchMenu;
+    @FXML
     public TextField searchField;
+    @FXML
     public Button searchbtn;
+    public Button Addbtn;
+    public Menu Ticket;
     // bring elements from FXML
     @FXML
     private TextField TicketField, PassengerField, FlightField;
     @FXML
-    private TableView<Ticket> View;
+    private TableView<Ticket> Tck;
     @FXML
     private TableColumn<Ticket, String> ticketcol;
     @FXML
@@ -41,8 +41,8 @@ public class TicketController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        TableView.TableViewSelectionModel<Ticket> defaultSelectionModel = View.getSelectionModel();
-        View.setSelectionModel(defaultSelectionModel);
+        TableView.TableViewSelectionModel<Ticket> defaultSelectionModel = Tck.getSelectionModel();
+        Tck.setSelectionModel(defaultSelectionModel);
 
         ticketcol.setCellValueFactory(
                 new PropertyValueFactory<Ticket, String>("ticketID")
@@ -56,8 +56,8 @@ public class TicketController implements Initializable {
         TicketField.setTooltip(new Tooltip("enter ticket ID"));
         PassengerField.setTooltip(new Tooltip("enter passenger"));
         FlightField.setTooltip(new Tooltip("enter Flight"));
-        View.setPlaceholder(new Label("No Ticket to display"));
-        View.setItems(data);
+        Tck.setPlaceholder(new Label("No Ticket to display"));
+        Tck.setItems(data);
         try {
             getTicketsDB();
         } catch (SQLException e) {
@@ -87,7 +87,7 @@ public class TicketController implements Initializable {
     @FXML
     public void OnDeleteButton() {
         Ticket ticKet = new Ticket(TicketField.getText(), PassengerField.getText(), FlightField.getText());
-        int row = View.getSelectionModel().getSelectedIndex();
+        int row = Tck.getSelectionModel().getSelectedIndex();
         try {
             delete(row);
             deleteData(ticKet);
@@ -97,9 +97,9 @@ public class TicketController implements Initializable {
     }
 
     public void AddtoTable(Ticket ticket) {
-        data = View.getItems();
+        data = Tck.getItems();
         data.add(0,ticket);
-        View.setItems(data);
+        Tck.setItems(data);
     }
 
     private void clearFields() {
@@ -118,7 +118,7 @@ public class TicketController implements Initializable {
         confirm.getButtonTypes().setAll(okButton, cancelButton);
         confirm.showAndWait().ifPresent(type -> {
             if (type == okButton) {
-                View.getItems().remove(row);
+                Tck.getItems().remove(row);
             }
         });
     }
@@ -190,6 +190,7 @@ public class TicketController implements Initializable {
     }
 
     public void searchForticket(String passenger){
+
         try {
             Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
@@ -204,8 +205,8 @@ public class TicketController implements Initializable {
                 Ticket selectedTicket = new Ticket(resultSet.getString(1),resultSet.getString(2),
                         resultSet.getString(3));
                 System.out.println(selectedTicket);
-                for (int i = 0; i < View.getItems().size(); i++) {
-                    if (View.getItems().get(i).getTicketID().equals(resultSet.getString(1)) ) {
+                for (int i = 0; i < Tck.getItems().size(); i++) {
+                    if (Tck.getItems().get(i).getTicketID().equals(resultSet.getString(1)) ) {
                         System.out.println("Selected Index : "+i);
                     }
                 }
@@ -219,18 +220,14 @@ public class TicketController implements Initializable {
         }
     }
     public void OnsearchButton() {
-        /*
         if (searchField.getText().isEmpty()) {
             Alert a = new Alert(Alert.AlertType.NONE);
             a.setAlertType(Alert.AlertType.ERROR);
             a.setContentText("search field empty");
             // show the dialog error
             a.show();
-        }*/
+        }
         searchForticket(searchField.getText());
-
     }
-
-
-    }
+}
 

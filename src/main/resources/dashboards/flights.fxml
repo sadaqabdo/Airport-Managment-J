@@ -1,36 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
-<?import com.jfoenix.controls.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import jfxtras.scene.control.*?>
-
-<VBox fx:id="vb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FlightsController">
-   <children>
-      <MenuBar>
-        <Menu fx:id="Flight" mnemonicParsing="false" text="Flight">
-                <items>
-                   <MenuItem fx:id="ViewFlightMenu" mnemonicParsing="false" onAction="#ViewFlightMenuClbck" text="View" />
-                   <MenuItem fx:id="AddFlightMenu" mnemonicParsing="false" onAction="#AddFlightMenuClbck" text="Add" />
-                   <MenuItem fx:id="SearchFlightMenu" mnemonicParsing="false" onAction="#SearchFlightMenuClbck" text="Search" />
-                </items>
-             </Menu>
-             <Menu fx:id="Ticket" mnemonicParsing="false" text="Ticket">
-                     <items>
-                     <MenuItem fx:id="ViewTicketMenu" mnemonicParsing="false" onAction="#ViewTicketMenuClbck" text="View" />
-                     <MenuItem fx:id="AddTicketMenu" mnemonicParsing="false" onAction="#AddTicketMenuClbck" text="Add" />
-                     <MenuItem fx:id="SearchTicketMenu" mnemonicParsing="false" onAction="#SearchTicketMenuClbck" text="Search" />
-                     </items>
-               </Menu>
-      </MenuBar>
-       <!--
-        Menu
-       -->
-
-=======
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -80,13 +49,11 @@
         <SplitPane fx:id="SplitPanee" dividerPositions="0.3" VBox.vgrow="ALWAYS">
 =======
         <SplitPane fx:id="SplitPanee" dividerPositions="0.3, 0.5" VBox.vgrow="ALWAYS">
->>>>>>> dca59cd839ed9be5ff4b2a97f835698a9883f7af
         <items>
 
             <!--
              GridPane AddFlight
              -->
-<<<<<<< HEAD
             <GridPane fx:id="addGrids" alignment="CENTER" prefHeight="317.0" prefWidth="242.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
