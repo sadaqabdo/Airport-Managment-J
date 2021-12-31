@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class FlightsDashboard extends Application {
     @Override
@@ -18,8 +19,10 @@ public class FlightsDashboard extends Application {
         stage.setTitle("helo");
 
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+
         stage.setResizable(true);
-        stage.setMaximized(true);
+        //stage.setMaximized(true);
         /*JFXTimePicker timePicker = new JFXTimePicker();
         Button b = new Button("joidja");
         SplitPane splitpanee = (SplitPane) scene.lookup("#SplitPanee");

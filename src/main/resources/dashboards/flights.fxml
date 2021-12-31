@@ -49,7 +49,7 @@
                   <Font name="Microsoft Tai Le Bold" size="22.0" />
                </font>
             </Label>
-            <Button fx:id="button_flights" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #05071F;" stylesheets="@style.css" text="Flights" textFill="#e7e5e5">
+            <Button fx:id="button_flights" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Flights" textFill="#e7e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="button_employee" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #05071F; -fx-text-fill: #e7e5e5;" stylesheets="@style.css" text="Employee">
+            <Button fx:id="button_employee" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Employee">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -85,7 +85,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button fx:id="button_tickets" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #05071F; -fx-text-fill: #e7e5e5;" stylesheets="@style.css" text="Tickets">
+            <Button fx:id="button_tickets" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Tickets">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -101,7 +101,7 @@
                </font>
             </Button>
             <AnchorPane />
-            <Button fx:id="button_logout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="258.0" style="-fx-background-color: #05071F; -fx-text-fill: #e7e5e5;" stylesheets="@style.css" text="Log out">
+            <Button fx:id="button_logout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="258.0" stylesheets="@style.css" text="Log out">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -117,9 +117,9 @@
       </VBox>
       <StackPane layoutX="256.0" layoutY="-1.0" prefHeight="716.0" prefWidth="931.0" style="-fx-background-color: #02030A;">
          <children>
-            <Pane fx:id="pnlOverview" prefHeight="716.0" prefWidth="1009.0">
+            <Pane fx:id="flightpnlOverview" prefHeight="716.0" prefWidth="1009.0">
                <children>
-                  <TextField layoutX="549.0" layoutY="29.0" onInputMethodTextChanged="#onsearchflight" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <TextField fx:id="searchfield" layoutX="549.0" layoutY="29.0" onAction="#onsearchflight" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
                   <Label layoutX="57.0" layoutY="25.0" text="Airport Management" textFill="#e7e5e5">
                      <font>
                         <Font size="24.0" />
@@ -135,7 +135,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TableView fx:id="FlightTable" layoutX="299.0" layoutY="116.0" prefHeight="435.0" prefWidth="628.0" style="-fx-background-color: white; -fx-background-radius: 0 0 20 20;">
+                  <TableView fx:id="FlightTable" layoutX="299.0" layoutY="116.0" onMouseClicked="#tableview" prefHeight="435.0" prefWidth="628.0" style="-fx-background-color: white; -fx-background-radius: 0 0 20 20;">
                      <columns>
                         <TableColumn fx:id="flightID" prefWidth="55.0" text="FlightID" />
                         <TableColumn fx:id="source" prefWidth="71.0" text="Source" />
@@ -221,17 +221,17 @@
                      </opaqueInsets>
                   </GridPane>
                   <GridPane layoutX="134.0" layoutY="603.0" prefHeight="67.0" prefWidth="628.0">
-                    <columnConstraints>
+                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
-                        <Button fx:id="Addbtn" mnemonicParsing="false" onAction="#onAddFlight" onMouseClicked="#getAddView" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #2a73ff;" text="Add" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="Addbtn" mnemonicParsing="false" onAction="#onAddFlight" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #2a73ff;" text="Add" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
