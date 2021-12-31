@@ -2,7 +2,6 @@ package controllers;
 
 import airportmanagment.DBConnection;
 import airportmanagment.DBMethodes;
-import classes.Employee;
 import classes.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,18 +17,25 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.*;
 import java.text.ParseException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class TicketController implements Initializable {
-    @FXML
-    public MenuItem SearchMenu;
+    // bring elements from FXML
     @FXML
     public TextField searchField;
     @FXML
     public Button searchbtn;
+    @FXML
     public Button Addbtn;
-    public Menu Ticket;
-    // bring elements from FXML
+    @FXML
+    public Button button_flights;
+    @FXML
+    public Button button_employee;
+    @FXML
+    public Button button_tickets;
+    @FXML
+    public Button button_logout;
     @FXML
     private TextField TicketField, PassengerField, FlightField;
     @FXML
@@ -41,15 +47,10 @@ public class TicketController implements Initializable {
     @FXML
     private TableColumn<Ticket, String> flightcol;
     @FXML
-    private Button DeleteBtn, AddBtn ;
-    @FXML
     private Button bt_exit;
     // initialize data in tableview each row is a ticket object
     private ObservableList<Ticket> data = FXCollections.observableArrayList();
     private ObservableList<Ticket> searcheddata = FXCollections.observableArrayList();
-    @FXML
-    private Button button_logout, button_flights, button_tickets, button_employee;
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,6 +83,7 @@ public class TicketController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        button_tickets.setStyle("-fx-background-color: white;-fx-background-radius:10;-fx-text-fill:Black;");
 
         button_logout.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -95,28 +97,20 @@ public class TicketController implements Initializable {
                 DBMethodes.changeFlight(event, "flights.fxml", "flights",null );
             }
         });
-        button_tickets.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBMethodes.changeTicket(event, "Ticket.fxml", "ticket",null );
-            }
-        });
         button_employee.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 DBMethodes.changeEmployee(event, "employee.fxml", "employee",null );
             }
         });
-
     }
     @FXML
     private void refreshTable() {
-
         try {
             searcheddata.clear();
             Connection connection = DBConnection.getConnection();
             ResultSet resultSet = null ;
-            String query = "SELECT * FROM `tickets`";
+            String query = "SELECT * FROM tickets";
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
 
@@ -131,7 +125,6 @@ public class TicketController implements Initializable {
             ex.printStackTrace();
         }
     }
-
     @FXML
     public void onAddButtonClick() throws ParseException {
         Ticket ticKet = new Ticket(TicketField.getText(), PassengerField.getText(), FlightField.getText());
@@ -215,7 +208,7 @@ public class TicketController implements Initializable {
             Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
             if (obj instanceof Ticket) {
-                String sql = "insert into tickets(idticket, passenger,flight) values(?,?,?);";
+                String sql = "insert into tickets values (?,?,?)";
                 int resultSet = 0;
                 System.out.println(((Ticket) obj).getTicketID());
                 System.out.println(((Ticket) obj).getPassenger());
@@ -227,7 +220,7 @@ public class TicketController implements Initializable {
                 resultSet=preparedStatement.executeUpdate();
                 System.out.println("A new record was inserted successfully!");
                 System.out.println(resultSet);
-                con.close();
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -238,7 +231,7 @@ public class TicketController implements Initializable {
             Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
             if (obj instanceof Ticket) {
-                String sql="DELETE FROM tickets WHERE idticket = ?;";
+                String sql="DELETE FROM tickets WHERE idticket = ?";
                 int resultSet = 0;
                 System.out.println(((Ticket) obj).getTicketID());
                 System.out.println(((Ticket) obj).getPassenger());
@@ -248,7 +241,7 @@ public class TicketController implements Initializable {
                 resultSet=preparedStatement.executeUpdate();
                 System.out.println("Row deleted from database!");
                 System.out.println(((Ticket) obj).getTicketID());
-                con.close();
+
             }
         }catch (SQLException e) {
             e.printStackTrace();
@@ -256,37 +249,76 @@ public class TicketController implements Initializable {
     }
 
     public void searchForticket(String passenger){
+        try {
+            searcheddata.clear();
+            Connection connection = DBConnection.getConnection();
+            ResultSet resultSet = null ;
+            String query = "SELECT * FROM tickets where upper(passenger) like ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1,passenger.toUpperCase(Locale.ROOT));
+            resultSet = preparedStatement.executeQuery();
 
+            while (resultSet.next()){
+                searcheddata.add(new Ticket(
+                        resultSet.getString("idticket"),
+                        resultSet.getString("passenger"),
+                        resultSet.getString("flight")));
+                Tck.setItems(searcheddata);
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    /////
+    /*
+    public void searchForemp(String name){
         try {
             Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
-            String sql = "select * from tickets where passenger = ?";
+            String sql = "select * from employees where upper(name) like ?";
             ResultSet resultSet;
             preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1,passenger);
+            preparedStatement.setString(1,name.toUpperCase(Locale.ROOT));
             resultSet = preparedStatement.executeQuery();
             System.out.println("Row found from database!");
 
             while(resultSet.next()) {
-                Ticket selectedTicket = new Ticket(resultSet.getString(1), resultSet.getString(2),
-                        resultSet.getString(3));
+                Employee selectedTicket = new Employee(resultSet.getString(1), resultSet.getInt(2),
+                        resultSet.getString(3),resultSet.getString(4),resultSet.getString(5));
                 searcheddata.add(selectedTicket);
                 System.out.println(selectedTicket);
-                for (int i = 0; i < Tck.getItems().size(); i++) {
-                    if (Tck.getItems().get(i).getTicketID().equals(resultSet.getString(1))) {
+                for (int i = 0; i < employeeTable.getItems().size(); i++) {
+                    if (employeeTable.getItems().get(i).getName().equals(resultSet.getString(1))) {
                         System.out.println("Selected Index : " + i);
                     }
                 }
                 System.out.println(resultSet.getString(1));
                 System.out.println(resultSet.getString(1).getClass().getName());
             }
-            Tck.setItems(searcheddata);
+            employeeTable.setItems(searcheddata);
 
             con.close();
-        }catch (SQLException e) {
-            e.printStackTrace();
+        }catch (SQLException ee) {
+            ee.printStackTrace();
+        }
+
+    }
+    public void OnsearchButton() {
+        if (search_barre.getText().isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("search field empty");
+            // show the dialog error
+            a.show();
+        }else{
+            employeeTable.getItems().clear();
+            searchForemp(search_barre.getText());
         }
     }
+
+     */
+    //////////
     public void OnsearchButton() {
         if (searchField.getText().isEmpty()) {
             Alert a = new Alert(Alert.AlertType.NONE);
@@ -294,8 +326,11 @@ public class TicketController implements Initializable {
             a.setContentText("search field empty");
             // show the dialog error
             a.show();
+
         }else{
+            Tck.getItems().clear();
             searchForticket(searchField.getText());
+            searchField.clear();
         }
     }
     void setTextField(String ticket, String passenger, String flight) {

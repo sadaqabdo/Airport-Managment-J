@@ -4,8 +4,10 @@ package controllers;
 import airportmanagment.DBConnection;
 import airportmanagment.DBMethodes;
 import classes.Employee;
+import classes.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class EmployeesController implements Initializable {
@@ -81,12 +84,7 @@ public class EmployeesController implements Initializable {
                 DBMethodes.changeTicket(event, "Tickets.fxml", "ticket",null );
             }
         });
-        button_employee.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                DBMethodes.changeEmployee(event, "employee.fxml", "employee",null );
-            }
-        });
+        button_employee.setStyle("-fx-background-color: white;-fx-background-radius:10;-fx-text-fill:Black;");
     }
 
 
@@ -251,7 +249,51 @@ public class EmployeesController implements Initializable {
         tf_gender.setText(gender);
 
     }
+    ///
+    @FXML
+    private Button search;
+    private ObservableList<Employee> searcheddata = FXCollections.observableArrayList();
+    public void searchForemp(String name){
+        try {
+            Connection con = DBConnection.getConnection();
+            Statement st = con.createStatement();
+            String sql = "select * from employees where upper(name) like ?";
+            ResultSet resultSet;
+            preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1,name.toUpperCase(Locale.ROOT));
+            resultSet = preparedStatement.executeQuery();
+            System.out.println("Row found from database!");
 
+            while (resultSet.next()){
+                searcheddata.add(new Employee(
+                        resultSet.getString("name"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("gender"),
+                        resultSet.getString("job"),
+                        resultSet.getString("nationality")));
+
+            }
+            employeeTable.setItems(searcheddata);
+
+            con.close();
+        }catch (SQLException ee) {
+            ee.printStackTrace();
+        }
+
+    }
+    public void OnsearchButton() {
+        if (search_barre.getText().isEmpty()) {
+            Alert a = new Alert(Alert.AlertType.NONE);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("search field empty");
+            // show the dialog error
+            a.show();
+        }else{
+            employeeTable.getItems().clear();
+            searchForemp(search_barre.getText());
+        }
+    }
+    ///
     public void tableview(MouseEvent mouseEvent) {
         try {
             Employee e = employeeTable.getSelectionModel().getSelectedItem();
@@ -259,7 +301,5 @@ public class EmployeesController implements Initializable {
         }catch (Exception ee){
             ee.getMessage();
         }
-
-
     }
 }
