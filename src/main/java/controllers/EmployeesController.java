@@ -78,7 +78,7 @@ public class EmployeesController implements Initializable {
         button_tickets.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBMethodes.changeTicket(event, "Ticket.fxml", "ticket",null );
+                DBMethodes.changeTicket(event, "Tickets.fxml", "ticket",null );
             }
         });
         button_employee.setOnAction(new EventHandler<ActionEvent>() {

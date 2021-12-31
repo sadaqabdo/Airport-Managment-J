@@ -16,7 +16,6 @@ public class TicketsDashboard extends Application{
             FXMLLoader fxmlLoader = new FXMLLoader(TicketsDashboard.class.getResource("Tickets.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 900, 500);
             Image image = new Image("file:src/main/resources/dashboards/logo.png");
-
             stage.setTitle("Airport Nameless");
             stage.setMaximized(true);
             stage.setScene(scene);
